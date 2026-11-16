@@ -1,0 +1,106 @@
+/* =========================================================
+   ESTILOS PARA EL MÓDULO DE EMPRESAS Y TERCEROS
+========================================================= */
+
+/* TARJETA SUPERIOR DE FILTROS */
+.tarjeta-filtro-empresas {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.grupo-busqueda-emp {
+    flex: 1;
+    max-width: 450px;
+}
+
+.grupo-busqueda-emp .input-icono {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.grupo-busqueda-emp .input-icono i {
+    position: absolute;
+    left: 14px;
+    width: 18px;
+    height: 18px;
+    color: var(--text-muted);
+}
+
+.grupo-busqueda-emp .input-icono input {
+    width: 100%;
+    padding: 11px 14px 11px 42px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--input-bg);
+    font-size: 0.9rem;
+    color: var(--text-main);
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.grupo-busqueda-emp .input-icono input:focus {
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.12);
+}
+
+/* FORMATO DE CELDAS PARA EMPRESAS */
+.emp-celda-titulo {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.emp-sub {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.acciones-fila-grupo {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-accion-tabla {
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.2s;
+}
+
+.btn-accion-tabla i {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-accion-tabla:hover {
+    background: #e8f0fe;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .tarjeta-filtro-empresas {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .grupo-busqueda-emp {
+        width: 100%;
+        max-width: 100%;
+    }
+}

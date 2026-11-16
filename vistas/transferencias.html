@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transferencias Documentales | ARCHIVEX</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/img/favicon-archivex.png">
+
+    <!-- CSS ARCHIVEX -->
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/transferencias.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="cuerpo-dashboard">
+
+    <div class="dashboard-container">
+
+        <!-- =========================================
+             SIDEBAR LATERAL (AZUL INSTITUCIONAL)
+        ========================================== -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-logo">
+                <img src="/img/logo-archivex.png" alt="Logo ARCHIVEX">
+            </div>
+
+            <nav class="sidebar-menu">
+                <div class="menu-categoria">Principal</div>
+                <a href="dashboard.html" class="menu-item">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard / Resumen</span>
+                </a>
+
+                <div class="menu-categoria">Gestión Documental</div>
+                <a href="recepcion.html" class="menu-item">
+                    <i data-lucide="inbox"></i>
+                    <span>Recepción de Documentos</span>
+                </a>
+                <a href="empresas.html" class="menu-item">
+                    <i data-lucide="building-2"></i>
+                    <span>Gestión de Empresas / Terceros</span>
+                </a>
+                <a href="radicacion.html" class="menu-item">
+                    <i data-lucide="file-plus-2"></i>
+                    <span>Radicación y Correspondencia</span>
+                </a>
+                <a href="digitalizacion.html" class="menu-item">
+                    <i data-lucide="scan"></i>
+                    <span>Digitalización e Indexación</span>
+                </a>
+                <a href="clasificacion.html" class="menu-item">
+                    <i data-lucide="folder-tree"></i>
+                    <span>TRD (Tablas de Retención)</span>
+                </a>
+                <a href="expedientes.html" class="menu-item">
+                    <i data-lucide="folder-open"></i>
+                    <span>Gestión de Expedientes</span>
+                </a>
+                <a href="prestamos.html" class="menu-item">
+                    <i data-lucide="book-open-check"></i>
+                    <span>Préstamos y Consultas</span>
+                </a>
+                <a href="transferencias.html" class="menu-item activo">
+                    <i data-lucide="arrow-right-left"></i>
+                    <span>Transferencias Documentales</span>
+                </a>
+                <a href="disposicion.html" class="menu-item">
+                    <i data-lucide="trash-2"></i>
+                    <span>Disposición Final / Eliminación</span>
+                </a>
+
+                <div class="menu-categoria">Administración</div>
+                <a href="usuarios.html" class="menu-item">
+                    <i data-lucide="users"></i>
+                    <span>Gestión de Usuarios</span>
+                </a>
+                <a href="seguridad.html" class="menu-item">
+                    <i data-lucide="shield-check"></i>
+                    <span>Seguridad y Autorizaciones</span>
+                </a>
+                <a href="reportes.html" class="menu-item">
+                    <i data-lucide="bar-chart-3"></i>
+                    <span>Reportes y Auditoría</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" class="menu-item salir" id="btnCerrarSesion">
+                    <i data-lucide="log-out"></i>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </div>
+        </aside>
+
+
+        <!-- =========================================
+             CONTENIDO PRINCIPAL - TRANSFERENCIAS
+        ========================================== -->
+        <main class="dashboard-main">
+
+            <!-- HEADER SUPERIOR -->
+            <header class="dashboard-header">
+                <div class="header-saludo">
+                    <h1>Transferencias <span>Documentales</span></h1>
+                    <p>Programación y control de traslados entre archivos de gestión, central e histórico</p>
+                </div>
+
+                <div class="header-acciones">
+                    <div class="buscador-global">
+                        <i data-lucide="search"></i>
+                        <input type="text" placeholder="Buscar transferencia, dependencia...">
+                    </div>
+                    <button class="btn-notificacion" aria-label="Notificaciones">
+                        <i data-lucide="bell"></i>
+                        <span class="punto-notif"></span>
+                    </button>
+                    <div class="perfil-usuario">
+                        <div class="avatar-iniciales" id="inicialesUsuario">FA</div>
+                    </div>
+                </div>
+            </header>
+
+
+            <!-- ÁREA DE CONTENIDO TRANSFERENCIAS -->
+            <div class="dashboard-content">
+
+                <!-- TARJETA SUPERIOR DE ACCIONES Y FILTROS -->
+                <div class="tarjeta-filtro-transf">
+                    <div class="grupo-busqueda-transf">
+                        <div class="input-icono">
+                            <i data-lucide="filter"></i>
+                            <input type="text" placeholder="Filtrar por tipo de transferencia (Primaria / Secundaria)...">
+                        </div>
+                    </div>
+
+                   <button type="button" class="btn-primario" id="btnNuevaTransferencia">
+                        <i data-lucide="plus-circle"></i>
+                        <span>Programar Transferencia</span>
+                    </button>
+                </div>
+
+
+                <!-- LISTADO / TABLA DE TRANSFERENCIAS -->
+                <div class="seccion-tabla">
+                    <div class="tabla-header">
+                        <h2>Cronograma de Transferencias Vigentes</h2>
+                        <span class="badge azul">Vigencia 2026</span>
+                    </div>
+
+                    <div class="tabla-contenedor">
+                        <table class="tabla-datos">
+                            <thead>
+                                <tr>
+                                    <th>ID / Radicado</th>
+                                    <th>Dependencia Remitente</th>
+                                    <th>Tipo de Transferencia</th>
+                                    <th>Fecha Programada</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaTransferencias">
+                                <tr>
+                                    <td><strong>TRF-2026-012</strong></td>
+                                    <td>
+                                        <div class="transf-celda-titulo">Oficina Jurídica</div>
+                                        <span class="transf-sub">Contratos y Convenios 2025</span>
+                                    </td>
+                                    <td><span class="badge azul">Transferencia Primaria (Gestión ➔ Central)</span></td>
+                                    <td>18 Nov 2026</td>
+                                    <td><span class="badge amarillo">En Preparación / Inventario</span></td>
+                                    <td>
+                                        <div class="acciones-fila-grupo">
+                                            <button class="btn-accion-tabla" title="Ver Inventario Único Documental (IUD)"><i data-lucide="file-spreadsheet"></i></button>
+                                            <button class="btn-accion-tabla" title="Aprobar Traslado"><i data-lucide="check-circle"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>TRF-2026-009</strong></td>
+                                    <td>
+                                        <div class="transf-celda-titulo">Gestión Financiera</div>
+                                        <span class="transf-sub">Comprobantes de Egreso 2024</span>
+                                    </td>
+                                    <td><span class="badge azul">Transferencia Primaria (Gestión ➔ Central)</span></td>
+                                    <td>25 Nov 2026</td>
+                                    <td><span class="badge verde">Inventario Aprobado</span></td>
+                                    <td>
+                                        <div class="acciones-fila-grupo">
+                                            <button class="btn-accion-tabla" title="Ver Inventario Único Documental (IUD)"><i data-lucide="file-spreadsheet"></i></button>
+                                            <button class="btn-accion-tabla" title="Aprobar Traslado"><i data-lucide="check-circle"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>TRF-2026-004</strong></td>
+                                    <td>
+                                        <div class="transf-celda-titulo">Archivo Central</div>
+                                        <span class="transf-sub">Actas de Junta Directiva Históricas</span>
+                                    </td>
+                                    <td><span class="badge morado">Transferencia Secundaria (Central ➔ Histórico)</span></td>
+                                    <td>10 Dic 2026</td>
+                                    <td><span class="badge verde">Completado</span></td>
+                                    <td>
+                                        <div class="acciones-fila-grupo">
+                                            <button class="btn-accion-tabla" title="Ver Acta de Entrega"><i data-lucide="file-text"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- ACTIVAR ICONOS LUCIDE -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <script src="../js/transferencias.js"></script>
+
+</body>
+</html>

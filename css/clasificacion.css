@@ -1,0 +1,111 @@
+/* =========================================================
+   ESTILOS PARA EL MÓDULO DE TRD (TABLAS DE RETENCIÓN)
+========================================================= */
+
+/* TARJETA DE FILTROS SUPERIORES */
+.tarjeta-filtro-trd {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.filtro-dependencia {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+}
+
+.filtro-dependencia label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.filtro-dependencia select {
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--input-bg);
+    font-size: 0.9rem;
+    color: var(--text-main);
+    outline: none;
+    width: 320px;
+    transition: all 0.2s ease;
+}
+
+.filtro-dependencia select:focus {
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.12);
+}
+
+/* FORMATO ESPECÍFICO PARA TABLA TRD */
+.tabla-trd th, 
+.tabla-trd td {
+    vertical-align: middle;
+}
+
+.trd-celda-titulo {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.trd-sub {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+/* BOTÓN DE ACCIÓN RÁPIDA EN FILA */
+.btn-accion-tabla {
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.2s;
+}
+
+.btn-accion-tabla i {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-accion-tabla:hover {
+    background: #e8f0fe;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* BADGES PERSONALIZADOS PARA DISPOSICIÓN FINAL */
+.badge.morado {
+    background: #f3e8fd;
+    color: #9334e6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .tarjeta-filtro-trd {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .filtro-dependencia {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .filtro-dependencia select {
+        width: 100%;
+    }
+}

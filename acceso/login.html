@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión | ARCHIVEX</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/img/favicon-archivex.png">
+
+    <!-- CSS ARCHIVEX -->
+    <link rel="stylesheet" href="/css/estilos.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <main class="pagina-acceso">
+
+        <!-- =================================
+             PANEL IZQUIERDO - CARRUSEL DE PRESENTACIÓN
+        ================================== -->
+        <section class="panel-presentacion">
+
+            <!-- CONTENEDOR DESLIZABLE (CARRUSEL) -->
+            <div class="carrusel-contenedor" id="carruselPresentacion">
+                
+                <!-- Slide 1 -->
+                <div class="slide activo" data-index="0">
+                    <div class="ilustracion-slide">
+                        <div class="circulo-fondo"></div>
+                        <div class="icono-flotante"><i data-lucide="folder-kanban"></i></div>
+                    </div>
+                    <div class="texto-presentacion">
+                        <h2>Todo tu archivo, en un solo lugar</h2>
+                        <p>Recibe, radica, digitaliza y clasifica documentos con trazabilidad completa.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="slide" data-index="1">
+                    <div class="ilustracion-slide">
+                        <div class="circulo-fondo"></div>
+                        <div class="icono-flotante"><i data-lucide="shield-check"></i></div>
+                    </div>
+                    <div class="texto-presentacion">
+                        <h2>Seguridad y cumplimiento institucional</h2>
+                        <p>Protege la información confidencial con estrictos controles de acceso y auditoría.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="slide" data-index="2">
+                    <div class="ilustracion-slide">
+                        <div class="circulo-fondo"></div>
+                        <div class="icono-flotante"><i data-lucide="zap"></i></div>
+                    </div>
+                    <div class="texto-presentacion">
+                        <h2>Búsqueda rápida e inteligente</h2>
+                        <p>Localiza expedientes y trámites en segundos mediante metadatos avanzados.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- INDICADORES (LAS TRES LÍNEAS) -->
+            <div class="indicadores-presentacion" id="indicadoresCarrusel">
+                <span class="indicador activo" data-slide="0"></span>
+                <span class="indicador" data-slide="1"></span>
+                <span class="indicador" data-slide="2"></span>
+            </div>
+
+        </section>
+
+        <!-- =================================
+             PANEL DERECHO - INICIO DE SESIÓN
+        ================================== -->
+        <section class="panel-acceso">
+
+            <div class="tarjeta-login">
+
+                <!-- LOGO UBICADO ENCIMA DEL TÍTULO DE INICIO DE SESIÓN -->
+                <div class="logo-acceso">
+                    <img src="/img/logo-archivex.png" alt="Logo ARCHIVEX">
+                </div>
+
+                <!-- ENCABEZADO -->
+                <div class="encabezado-login">
+                    <h1>Iniciar sesión</h1>
+                    <p>Gestión Documental Institucional</p>
+                </div>
+
+                <!-- FORMULARIO -->
+                <form class="formulario-login" id="formularioLogin">
+
+                    <!-- USUARIO -->
+                    <div class="campo-formulario">
+                        <label for="usuario">Usuario</label>
+                        <div class="input-icono">
+                            <i data-lucide="user"></i>
+                            <input 
+                                type="text" 
+                                id="usuario" 
+                                name="usuario" 
+                                placeholder="Ingrese su usuario" 
+                                autocomplete="username" 
+                                required>
+                        </div>
+                    </div>
+
+                    <!-- CONTRASEÑA -->
+                    <div class="campo-formulario">
+                        <label for="contrasena">Contraseña</label>
+                        <div class="input-icono">
+                            <i data-lucide="lock"></i>
+                            <input 
+                                type="password" 
+                                id="contrasena" 
+                                name="contrasena" 
+                                placeholder="Ingrese su contraseña" 
+                                autocomplete="current-password" 
+                                required>
+                            <button 
+                                type="button" 
+                                class="mostrar-contrasena" 
+                                id="mostrarContrasena" 
+                                aria-label="Mostrar contraseña">
+                                <i data-lucide="eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- OPCIONES -->
+                    <div class="opciones-login">
+                        <label class="recordar-usuario">
+                            <input type="checkbox" id="recordar" name="recordar">
+                            <span>Recordarme</span>
+                        </label>
+                        <a href="recuperar.html">¿Olvidó su contraseña?</a>
+                    </div>
+
+                    <!-- MENSAJE -->
+                    <p id="mensajeLogin" class="mensaje-login"></p>
+
+                    <!-- BOTÓN INGRESAR -->
+                    <button type="submit" class="btn-login">
+                        <span>Ingresar al sistema</span>
+                    </button>
+
+                </form>
+
+                <!-- SOPORTE -->
+                <div class="text-center mt-3 register-link">
+                    <span>¿No tienes cuenta?, Regístrate</span>
+                    <a href="registro.html"> aquí</a>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- JAVASCRIPT -->
+    <script src="/js/archivex.js"></script>
+
+    <!-- SCRIPT PARA CONTROLAR EL CARRUSEL Y LAS LÍNEAS -->
+    <script>
+        lucide.createIcons();
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const slides = document.querySelectorAll(".slide");
+            const indicadores = document.querySelectorAll(".indicador");
+            let currentIndex = 0;
+            const intervalTime = 5000;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle("activo", i === index);
+                });
+                indicadores.forEach((ind, i) => {
+                    ind.classList.toggle("activo", i === index);
+                });
+                currentIndex = index;
+            }
+
+            function nextSlide() {
+                let nextIndex = (currentIndex + 1) % slides.length;
+                showSlide(nextIndex);
+            }
+
+            let slideInterval = setInterval(nextSlide, intervalTime);
+
+            indicadores.forEach((ind) => {
+                ind.addEventListener("click", function () {
+                    clearInterval(slideInterval);
+                    const slideIndex = parseInt(this.getAttribute("data-slide"));
+                    showSlide(slideIndex);
+                    slideInterval = setInterval(nextSlide, intervalTime);
+                });
+            });
+        });
+    </script>
+
+    <script src="../js/login.js"></script>
+
+</body>
+</html>

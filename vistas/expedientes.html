@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Expedientes | ARCHIVEX</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/img/favicon-archivex.png">
+
+    <!-- CSS ARCHIVEX -->
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/expedientes.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="cuerpo-dashboard">
+
+    <div class="dashboard-container">
+
+        <!-- =========================================
+             SIDEBAR LATERAL (AZUL INSTITUCIONAL)
+        ========================================== -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-logo">
+                <img src="/img/logo-archivex.png" alt="Logo ARCHIVEX">
+            </div>
+
+            <nav class="sidebar-menu">
+                <div class="menu-categoria">Principal</div>
+                <a href="dashboard.html" class="menu-item">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard / Resumen</span>
+                </a>
+
+                <div class="menu-categoria">Gestión Documental</div>
+                <a href="recepcion.html" class="menu-item">
+                    <i data-lucide="inbox"></i>
+                    <span>Recepción de Documentos</span>
+                </a>
+                <a href="empresas.html" class="menu-item">
+                    <i data-lucide="building-2"></i>
+                    <span>Gestión de Empresas / Terceros</span>
+                    </a>
+                <a href="radicacion.html" class="menu-item">
+                    <i data-lucide="file-plus-2"></i>
+                    <span>Radicación y Correspondencia</span>
+                </a>
+                <a href="digitalizacion.html" class="menu-item">
+                    <i data-lucide="scan"></i>
+                    <span>Digitalización e Indexación</span>
+                </a>
+                <a href="clasificacion.html" class="menu-item">
+                    <i data-lucide="folder-tree"></i>
+                    <span>TRD (Tablas de Retención)</span>
+                </a>
+                <a href="expedientes.html" class="menu-item activo">
+                    <i data-lucide="folder-open"></i>
+                    <span>Gestión de Expedientes</span>
+                </a>
+                <a href="prestamos.html" class="menu-item">
+                    <i data-lucide="book-open-check"></i>
+                    <span>Préstamos y Consultas</span>
+                </a>
+                <a href="transferencias.html" class="menu-item">
+                    <i data-lucide="arrow-right-left"></i>
+                    <span>Transferencias Documentales</span>
+                </a>
+                <a href="disposicion.html" class="menu-item">
+                    <i data-lucide="trash-2"></i>
+                    <span>Disposición Final / Eliminación</span>
+                </a>
+
+                <div class="menu-categoria">Administración</div>
+                <a href="usuarios.html" class="menu-item">
+                    <i data-lucide="users"></i>
+                    <span>Gestión de Usuarios</span>
+                </a>
+                <a href="seguridad.html" class="menu-item">
+                    <i data-lucide="shield-check"></i>
+                    <span>Seguridad y Autorizaciones</span>
+                </a>
+                <a href="reportes.html" class="menu-item">
+                    <i data-lucide="bar-chart-3"></i>
+                    <span>Reportes y Auditoría</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" class="menu-item salir" id="btnCerrarSesion"></a>
+                    <i data-lucide="log-out"></i>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </div>
+        </aside>
+
+
+        <!-- =========================================
+             CONTENIDO PRINCIPAL - EXPEDIENTES
+        ========================================== -->
+        <main class="dashboard-main">
+
+            <!-- HEADER SUPERIOR -->
+            <header class="dashboard-header">
+                <div class="header-saludo">
+                    <h1>Gestión de <span>Expedientes</span></h1>
+                    <p>Agrupación documental, índices electrónicos y control de unidades de conservación</p>
+                </div>
+
+                <div class="header-acciones">
+                    <div class="buscador-global">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="buscarExpediente" placeholder="Buscar expediente, código...">
+                    </div>
+                    <button class="btn-notificacion" aria-label="Notificaciones">
+                        <i data-lucide="bell"></i>
+                        <span class="punto-notif"></span>
+                    </button>
+                    <div class="perfil-usuario">
+                        <div class="avatar-iniciales" id="inicialesUsuario">FA</div>
+                    </div>
+                </div>
+            </header>
+
+
+            <!-- ÁREA DE CONTENIDO EXPEDIENTES -->
+            <div class="dashboard-content">
+
+                <!-- TARJETA SUPERIOR DE ACCIONES Y FILTROS -->
+                <div class="tarjeta-filtro-expediente">
+                    <div class="grupo-busqueda-exp">
+                        <div class="input-icono">
+                            <i data-lucide="folder-search"></i>
+                            <input type="text" id="filtroExpedientes" placeholder="Filtrar por nombre de expediente o código TRD...">
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-primario" id="btnNuevoExpediente">
+                        <i data-lucide="folder-plus"></i>
+                        <span>Crear Nuevo Expediente</span>
+                    </button>
+                </div>
+
+
+                <!-- LISTADO / TABLA DE EXPEDIENTES ACTIVOS -->
+                <div class="seccion-tabla">
+                    <div class="tabla-header">
+                        <h2>Expedientes Electrónicos Abiertos</h2>
+                        <span class="badge azul" id="totalExpedientes">Total: 0 Activos</span>
+                    </div>
+
+                    <div class="tabla-contenedor">
+                        <table class="tabla-datos">
+                            <thead>
+                                <tr>
+                                    <th>Código / U. Documental</th>
+                                    <th>Nombre del Expediente</th>
+                                    <th>Serie / TRD</th>
+                                    <th>Folios</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaExpedientes">
+                                <tr>
+                                    <td><strong>EXP-2026-100</strong></td>
+                                    <td>
+                                        <div class="exp-celda-titulo">Actas de Junta Directiva 2026</div>
+                                        <span class="exp-sub">Dependencia: Gerencia General</span>
+                                    </td>
+                                    <td>100 - Actas y Resoluciones</td>
+                                    <td>142</td>
+                                    <td><span class="badge verde">Abierto / Activo</span></td>
+                                    <td>
+                                        <div class="acciones-fila-grupo">
+                                            <button class="btn-accion-tabla" title="Ver documentos del expediente"><i data-lucide="folder-open"></i></button>
+                                            <button class="btn-accion-tabla" title="Generar índice electrónico"><i data-lucide="file-text"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>EXP-2026-205</strong></td>
+                                    <td>
+                                        <div class="exp-celda-titulo">Contratos de Prestación de Servicios - Lote 1</div>
+                                        <span class="exp-sub">Dependencia: Oficina Jurídica</span>
+                                    </td>
+                                    <td>200 - Contratos y Convenios</td>
+                                    <td>285</td>
+                                    <td><span class="badge verde">Abierto / Activo</span></td>
+                                    <td>
+                                        <div class="acciones-fila-grupo">
+                                            <button class="btn-accion-tabla" title="Ver documentos del expediente"><i data-lucide="folder-open"></i></button>
+                                            <button class="btn-accion-tabla" title="Generar índice electrónico"><i data-lucide="file-text"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>EXP-2026-301</strong></td>
+                                    <td>
+                                        <div class="exp-celda-titulo">Historia Laboral - Carlos Andrés Gómez</div>
+                                        <span class="exp-sub">Dependencia: Talento Humano</span>
+                                    </td>
+                                    <td>300 - Historias Laborales</td>
+                                    <td>64</td>
+                                    <td><span class="badge amarillo">En Tramite</span></td>
+                                    <td>
+                                        <div class="acciones-fila-grupo">
+                                            <button class="btn-accion-tabla" title="Ver documentos del expediente"><i data-lucide="folder-open"></i></button>
+                                            <button class="btn-accion-tabla" title="Generar índice electrónico"><i data-lucide="file-text"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- ACTIVAR ICONOS LUCIDE -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <script src="../js/expedientes.js"></script>
+
+</body>
+</html>

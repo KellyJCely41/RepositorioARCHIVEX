@@ -1,0 +1,583 @@
+:root {
+    --primary-color: #1a73e8;
+    --primary-hover: #1557b0;
+    
+    /* Degradado del panel izquierdo (azul principal) */
+    --bg-sidebar-gradient: linear-gradient(135deg, #2b7de9 0%, #1557b0 100%);
+    
+    /* Degradado en azules claritos para el fondo del panel derecho */
+    --bg-login-gradient: linear-gradient(135deg, #f0f4ff 0%, #e1ecfd 50%, #f7f9fc 100%);
+    
+    --card-bg: #ffffff;
+    --text-main: #202124;
+    --text-muted: #5f6368;
+    --border-color: #dadce0;
+    --input-bg: #f8f9fa;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f7fc;
+    color: var(--text-main);
+    min-height: 100vh;
+}
+
+.pagina-acceso {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* =========================================================
+   PANEL IZQUIERDO - CARRUSEL DE PRESENTACIÓN
+========================================================= */
+.panel-presentacion {
+    flex: 1;
+    background: var(--bg-sidebar-gradient);
+    color: white;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+}
+
+/* CARRUSEL DE SLIDES */
+.carrusel-contenedor {
+    position: relative;
+    width: 100%;
+    margin-bottom: auto;
+    margin-top: auto;
+    min-height: 340px;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+    transform: translateY(15px);
+}
+
+.slide.activo {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.ilustracion-slide {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circulo-fondo {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    backdrop-filter: blur(6px);
+}
+
+.icono-flotante {
+    position: relative;
+    z-index: 2;
+    background: white;
+    color: var(--primary-color);
+    width: 75px;
+    height: 75px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.icono-flotante i {
+    width: 38px;
+    height: 38px;
+}
+
+.texto-presentacion h2 {
+    font-size: 2rem;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.texto-presentacion p {
+    font-size: 1rem;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+/* INDICADORES EN FORMA DE LÍNEAS */
+.indicadores-presentacion {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.indicador {
+    width: 32px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.35);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicador.activo {
+    width: 55px;
+    background-color: white;
+}
+
+/* =========================================================
+   PANEL DERECHO - LOGIN (CON DEGRADADO EN AZULES CLARITOS)
+========================================================= */
+.panel-acceso {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background: var(--bg-login-gradient);
+}
+
+.tarjeta-login {
+    width: 100%;
+    max-width: 420px;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(26, 115, 232, 0.08);
+}
+
+/* LOGO SITUADO ENCIMA DEL TÍTULO DE INICIO DE SESIÓN */
+.logo-acceso {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.logo-acceso img {
+    max-width: 140px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.encabezado-login {
+    margin-bottom: 25px;
+}
+
+.encabezado-login h1 {
+    font-size: 1.8rem;
+    color: var(--text-main);
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.encabezado-login p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* FORMULARIO */
+.formulario-login {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo-formulario label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.input-icono {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icono i {
+    position: absolute;
+    left: 14px;
+    color: var(--text-muted);
+    width: 18px;
+    height: 18px;
+}
+
+.input-icono input {
+    width: 100%;
+    padding: 12px 14px 12px 42px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--input-bg);
+    font-size: 0.95rem;
+    color: var(--text-main);
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.input-icono input:focus {
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.15);
+}
+
+/* BOTÓN MOSTRAR CONTRASEÑA */
+.mostrar-contrasena {
+    position: absolute;
+    right: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+}
+
+.mostrar-contrasena i {
+    position: static;
+    width: 18px;
+    height: 18px;
+}
+
+/* OPCIONES */
+.opciones-login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.recordar-usuario {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+.recordar-usuario input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.opciones-login a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.opciones-login a:hover {
+    text-decoration: underline;
+}
+
+/* MENSAJE */
+.mensaje-login {
+    font-size: 0.9rem;
+    color: #d93025;
+}
+
+/* BOTÓN INGRESAR */
+.btn-login {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.btn-login:hover {
+    background-color: var(--primary-hover);
+}
+
+/* SOPORTE */
+.soporte-login {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.soporte-login a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.soporte-login a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN (MÓVILES Y TABLETS)
+========================================================= */
+@media (max-width: 900px) {
+    .pagina-acceso {
+        flex-direction: column;
+    }
+    
+    .panel-presentacion {
+        display: none;
+    }
+    
+    .panel-acceso {
+        padding: 30px 20px;
+        min-height: 100vh;
+    }
+
+    .tarjeta-login {
+        box-shadow: none;
+        background: transparent;
+        padding: 20px;
+    }
+}
+
+/* =========================================================
+   ESTILOS ESPECÍFICOS PARA LA VISTA DE REGISTRO (3 COLUMNAS)
+========================================================= */
+
+.tarjeta-registro {
+    width: 100%;
+    max-width: 860px; /* Ancho extendido para acomodar las 3 columnas cómodamente */
+    background: var(--card-bg);
+    padding: 35px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(26, 115, 232, 0.08);
+}
+
+.formulario-registro {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Grilla de 3 columnas para los campos de registro */
+.grid-tres-columnas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+/* Ajustes responsivos para pantallas medianas (2 columnas) y móviles (1 columna) */
+@media (max-width: 1100px) {
+    .tarjeta-registro {
+        max-width: 650px;
+    }
+    .grid-tres-columnas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-tres-columnas {
+        grid-template-columns: 1fr;
+    }
+    .tarjeta-registro {
+        padding: 20px;
+        box-shadow: none;
+        background: transparent;
+    }
+}
+/* =========================================================
+   ESTILOS ESPECÍFICOS PARA LA VISTA DE REGISTRO (3 COLUMNAS)
+========================================================= */
+
+.tarjeta-registro {
+    width: 100%;
+    max-width: 900px; /* Ancho amplio ideal para desplegar los campos en 3 columnas */
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(26, 115, 232, 0.08);
+}
+
+.formulario-registro {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Grilla de 3 columnas exactas */
+.grid-tres-columnas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+/* Contenido estático del panel izquierdo sin carrusel */
+.contenido-estatico {
+    margin: auto 0;
+    max-width: 400px;
+}
+
+/* Ajustes adaptativos para pantallas medianas (2 columnas) y móviles (1 columna) */
+@media (max-width: 1100px) {
+    .tarjeta-registro {
+        max-width: 680px;
+    }
+    .grid-tres-columnas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-tres-columnas {
+        grid-template-columns: 1fr;
+    }
+    .tarjeta-registro {
+        padding: 20px;
+        box-shadow: none;
+        background: transparent;
+    }
+}
+
+/* =========================================================
+   AJUSTE DE PROPORCIONES (IZQUIERDA MÁS ESTRECHA / DERECHA MÁS AMPLIA)
+========================================================= */
+
+/* Panel izquierdo más compacto */
+.pagina-acceso .panel-presentacion {
+    flex: 0.8; /* Reduce el ancho relativo del lado azul */
+    padding: 40px;
+}
+
+/* Panel derecho más amplio */
+.pagina-acceso .panel-acceso {
+    flex: 1.6; /* Amplía el espacio disponible para el registro */
+    padding: 40px;
+}
+
+/* Tarjeta de registro más ancha para las 3 columnas */
+.tarjeta-registro {
+    width: 100%;
+    max-width: 1050px; /* Ampliado para que las 3 columnas tengan suficiente espacio */
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(26, 115, 232, 0.08);
+}
+
+.formulario-registro {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Grilla de 3 columnas holgadas */
+.grid-tres-columnas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px; /* Espaciado cómodo entre campos */
+}
+
+/* Contenido estático del panel izquierdo compacto */
+.contenido-estatico {
+    margin: auto 0;
+    max-width: 320px;
+}
+
+/* Adaptación responsive para pantallas medianas */
+@media (max-width: 1200px) {
+    .tarjeta-registro {
+        max-width: 750px;
+    }
+    .grid-tres-columnas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .pagina-acceso {
+        flex-direction: column;
+    }
+    .panel-presentacion {
+        display: none; /* Se oculta en móviles */
+    }
+    .grid-tres-columnas {
+        grid-template-columns: 1fr;
+    }
+    .tarjeta-registro {
+        padding: 20px;
+        box-shadow: none;
+        background: transparent;
+    }
+}
+
+/* =========================================================
+   AJUSTE DE TAMAÑO DE LETRA (LIGERAMENTE MÁS AMPLIO)
+========================================================= */
+
+/* Aumenta ligeramente el tamaño base del texto en toda la tarjeta de registro */
+.tarjeta-registro {
+    font-size: 1rem; /* Subido de tamaño para mayor legibilidad */
+}
+
+/* Título principal de la tarjeta */
+.encabezado-login h1 {
+    font-size: 2rem; /* Letra un poco más grande y destacada */
+}
+
+/* Subtítulo o descripción del encabezado */
+.encabezado-login p {
+    font-size: 1.05rem; 
+}
+
+/* Etiquetas (Labels) de los campos */
+.campo-formulario label {
+    font-size: 0.95rem; /* Etiquetas más claras y fáciles de leer */
+    font-weight: 600;
+}
+
+/* Campos de texto, selectores (inputs) y botones */
+.input-icono input,
+.input-icono select {
+    font-size: 1rem; /* Letra más amplia al escribir dentro de los inputs */
+    padding: 13px 14px 13px 42px; /* Espaciado interno proporcional al tamaño de la letra */
+}
+
+/* Botón principal */
+.btn-login {
+    font-size: 1.05rem;
+    padding: 15px;
+}
+
+/* Enlaces inferiores (como "¿Ya tienes una cuenta?") */
+.soporte-login {
+    font-size: 0.95rem;
+}

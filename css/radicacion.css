@@ -1,0 +1,194 @@
+/* =========================================================
+   ESTILOS PARA EL MÓDULO DE RADICACIÓN Y CORRESPONDENCIA
+========================================================= */
+
+.tarjeta-formulario-contenedor {
+    background: white;
+    padding: 35px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.tarjeta-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.titulo-icono-seccion {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.titulo-icono-seccion i {
+    width: 32px;
+    height: 32px;
+    color: var(--primary-color);
+    background: #e8f0fe;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.titulo-icono-seccion h2 {
+    font-size: 1.25rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.titulo-icono-seccion p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+/* GRILLA DEL FORMULARIO DE RADICACIÓN */
+.formulario-radicacion {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.grid-radicacion {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.span-2 {
+    grid-column: span 2;
+}
+
+.span-full {
+    grid-column: span 2;
+}
+
+/* CAMPOS Y ETIQUETAS */
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo-formulario label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.input-icono {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icono i {
+    position: absolute;
+    left: 14px;
+    width: 18px;
+    height: 18px;
+    color: var(--text-muted);
+}
+
+.input-icono input,
+.input-icono select {
+    width: 100%;
+    padding: 12px 14px 12px 42px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--input-bg);
+    font-size: 0.95rem;
+    color: var(--text-main);
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.input-icono input:focus,
+.input-icono select:focus,
+.formulario-radicacion textarea:focus {
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.12);
+}
+
+.formulario-radicacion textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--input-bg);
+    font-size: 0.95rem;
+    color: var(--text-main);
+    font-family: inherit;
+    outline: none;
+    resize: vertical;
+    transition: all 0.2s ease;
+}
+
+/* BOTONES DE ACCIÓN */
+.acciones-formulario {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.btn-secundario {
+    padding: 12px 22px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-secundario:hover {
+    background: var(--input-bg);
+    color: var(--text-main);
+}
+
+.btn-primario {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+    transition: all 0.2s;
+}
+
+.btn-primario i {
+    width: 18px;
+    height: 18px;
+}
+
+.btn-primario:hover {
+    background: #1557b0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .grid-radicacion {
+        grid-template-columns: 1fr;
+    }
+    .span-2,
+    .span-full {
+        grid-column: span 1;
+    }
+    .tarjeta-formulario-contenedor {
+        padding: 20px;
+    }
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cuenta | ARCHIVEX</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/img/favicon-archivex.png">
+
+    <!-- CSS ARCHIVEX -->
+    <link rel="stylesheet" href="/css/estilos.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <main class="pagina-acceso">
+
+        <!-- =================================
+             PANEL IZQUIERDO - ILUSTRACIÓN FIJA (SIN CARRUSEL)
+        ================================== -->
+        <section class="panel-presentacion">
+            <div class="contenido-estatico">
+                <div class="ilustracion-slide">
+                    <div class="circulo-fondo"></div>
+                    <div class="icono-flotante"><i data-lucide="user-plus"></i></div>
+                </div>
+                <div class="texto-presentacion">
+                    <h2>Únete a ARCHIVEX</h2>
+                    <p>Crea tu cuenta institucional y comienza a gestionar y clasificar todos tus documentos con total eficiencia y trazabilidad.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================
+             PANEL DERECHO - REGISTRO (3 COLUMNAS)
+        ================================== -->
+        <section class="panel-acceso">
+
+            <div class="tarjeta-registro">
+
+                <!-- LOGO SITUADO ENCIMA DEL TÍTULO -->
+                <div class="logo-acceso">
+                    <img src="/img/logo-archivex.png" alt="Logo ARCHIVEX">
+                </div>
+
+                <!-- ENCABEZADO -->
+                <div class="encabezado-login">
+                    <h1>Crear cuenta nueva</h1>
+                    <p>Registro de Usuario Institucional</p>
+                </div>
+
+                <!-- FORMULARIO DE 3 COLUMNAS -->
+                <form class="formulario-registro" id="formularioRegistro">
+
+                    <div class="grid-tres-columnas">
+
+                        <!-- NOMBRES -->
+                        <div class="campo-formulario">
+                            <label for="nombres">Nombres</label>
+                            <div class="input-icono">
+                                <i data-lucide="user"></i>
+                                <input type="text" id="nombres" name="nombres" placeholder="Tus nombres" required>
+                            </div>
+                        </div>
+
+                        <!-- APELLIDOS -->
+                        <div class="campo-formulario">
+                            <label for="apellidos">Apellidos</label>
+                            <div class="input-icono">
+                                <i data-lucide="user"></i>
+                                <input type="text" id="apellidos" name="apellidos" placeholder="Tus apellidos" required>
+                            </div>
+                        </div>
+
+                        <!-- TIPO DE DOCUMENTO -->
+                        <div class="campo-formulario">
+                            <label for="tipoDocumento">Tipo de Documento</label>
+                            <div class="input-icono">
+                                <i data-lucide="file-text"></i>
+                                <select id="tipoDocumento" name="tipoDocumento" required>
+                                    <option value="" disabled selected>Seleccione</option>
+                                    <option value="CC">Cédula de Ciudadanía</option>
+                                    <option value="CE">Cédula de Extranjería</option>
+                                    <option value="TI">Tarjeta de Identidad</option>
+                                    <option value="NIT">NIT</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- NÚMERO DE DOCUMENTO -->
+                        <div class="campo-formulario">
+                            <label for="numeroDocumento">Nº de Documento</label>
+                            <div class="input-icono">
+                                <i data-lucide="hash"></i>
+                                <input type="text" id="numeroDocumento" name="numeroDocumento" placeholder="Número de documento" required>
+                            </div>
+                        </div>
+
+                        <!-- CORREO ELECTRÓNICO -->
+                        <div class="campo-formulario">
+                            <label for="email">Correo Electrónico</label>
+                            <div class="input-icono">
+                                <i data-lucide="mail"></i>
+                                <input type="email" id="email" name="email" placeholder="correo@institucion.com" autocomplete="email" required>
+                            </div>
+                        </div>
+
+                        <!-- NOMBRE DE USUARIO -->
+                        <div class="campo-formulario">
+                            <label for="usuario">Usuario</label>
+                            <div class="input-icono">
+                                <i data-lucide="at-sign"></i>
+                                <input type="text" id="usuario" name="usuario" placeholder="Nombre de usuario" autocomplete="username" required>
+                            </div>
+                        </div>
+
+                        <!-- CONTRASEÑA -->
+                        <div class="campo-formulario">
+                            <label for="contrasena">Contraseña</label>
+                            <div class="input-icono">
+                                <i data-lucide="lock"></i>
+                                <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" autocomplete="new-password" required>
+                                <button type="button" class="mostrar-contrasena" id="mostrarContrasena" aria-label="Mostrar contraseña">
+                                    <i data-lucide="eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- CONFIRMAR CONTRASEÑA -->
+                        <div class="campo-formulario">
+                            <label for="confirmarContrasena">Confirmar Contraseña</label>
+                            <div class="input-icono">
+                                <i data-lucide="lock"></i>
+                                <input type="password" id="confirmarContrasena" name="confirmarContrasena" placeholder="Repetir contraseña" autocomplete="new-password" required>
+                            </div>
+                        </div>
+
+                        <!-- ROL INSTITUCIONAL -->
+                        <div class="campo-formulario">
+                            <label for="rol">Rol Institucional</label>
+                            <div class="input-icono">
+                                <i data-lucide="briefcase"></i>
+                                <select id="rol" name="rol" required>
+                                    <option value="" disabled selected>Seleccione rol</option>
+                                    <option value="funcionario">Funcionario</option>
+                                    <option value="supervisor">Supervisor</option>
+                                    <option value="archivo">Gestor de Archivo</option>
+                                    <option value="administrador">Administrador</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- MENSAJE DE VALIDACIÓN -->
+                    <p id="mensajeRegistro" class="mensaje-login"></p>
+
+                    <!-- BOTÓN REGISTRARSE -->
+                    <button type="submit" class="btn-login">
+                        <span>Completar Registro</span>
+                    </button>
+
+                </form>
+
+                <!-- ENLACE PARA VOLVER AL LOGIN -->
+                <div class="soporte-login">
+                    <span>¿Ya tienes una cuenta?</span>
+                    <a href="index.html">Inicia sesión aquí</a>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- JAVASCRIPT -->
+    <script src="/js/archivex.js"></script>
+
+    <!-- ACTIVAR ICONOS LUCIDE (SIN LÓGICA DE CARRUSEL) -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <script src="../js/registro.js"></script>
+
+</body>
+</html>

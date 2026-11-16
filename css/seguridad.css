@@ -1,0 +1,167 @@
+/* =========================================================
+   ESTILOS PARA EL MÓDULO DE SEGURIDAD Y AUTORIZACIONES
+========================================================= */
+
+/* GRID DE CONFIGURACIÓN */
+.grid-seguridad {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.tarjeta-config-seg {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cuerpo-config {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.opcion-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.opcion-toggle strong {
+    font-size: 0.92rem;
+    color: var(--text-main);
+    display: block;
+    margin-bottom: 2px;
+}
+
+.opcion-toggle p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.toggle-switch {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.divisor-config {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 5px 0;
+}
+
+.texto-descripcion-seg {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.btn-secundario-sm {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: white;
+    border: 1px solid var(--border-color);
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: fit-content;
+}
+
+.btn-secundario-sm:hover {
+    background: #e8f0fe;
+    border-color: var(--primary-color);
+}
+
+.btn-secundario-sm i {
+    width: 16px;
+    height: 16px;
+}
+
+/* FORMATO DE CELDAS PARA SUPERADMINISTRADORES */
+.seg-celda-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar-tabla {
+    width: 36px;
+    height: 36px;
+    background: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seg-celda-titulo {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.seg-sub {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+/* BADGES PERSONALIZADOS */
+.badge.morado {
+    background: #f3e8fd;
+    color: #9334e6;
+}
+
+.acciones-fila-grupo {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-accion-tabla {
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.2s;
+}
+
+.btn-accion-tabla i {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-accion-tabla:hover {
+    background: #e8f0fe;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .grid-seguridad {
+        grid-template-columns: 1fr;
+    }
+}

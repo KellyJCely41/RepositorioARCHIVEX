@@ -1,0 +1,439 @@
+/* =========================================================
+   ESTILOS PARA EL DASHBOARD DE ARCHIVEX
+========================================================= */
+
+.cuerpo-dashboard {
+    background-color: var(--bg-main);
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* =========================================================
+   SIDEBAR LATERAL - AZUL INSTITUCIONAL
+========================================================= */
+.dashboard-sidebar {
+    width: 280px;
+    background: linear-gradient(180deg, #1557b0 0%, #1a73e8 100%);
+    border-right: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px 15px;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    color: white;
+    z-index: 100;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-sidebar .sidebar-logo {
+    padding: 0 10px;
+    margin-bottom: 15px;
+}
+
+.dashboard-sidebar .sidebar-logo img {
+    max-width: 130px;
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+}
+
+/* MENÚ CON SCROLL SUAVE PARA MÚLTIPLES OPCIONES */
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+    margin-bottom: 10px;
+}
+
+.sidebar-menu::-webkit-scrollbar {
+    width: 4px;
+}
+.sidebar-menu::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.menu-categoria {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: rgba(255, 255, 255, 0.65);
+    padding: 12px 12px 6px 12px;
+    font-weight: 700;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.menu-item i {
+    width: 18px;
+    height: 18px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: white;
+}
+
+.menu-item:hover i {
+    color: white;
+}
+
+.menu-item.activo {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-weight: 600;
+    box-shadow: inset 3px 0 0 white;
+}
+
+.menu-item.activo i {
+    color: white;
+}
+
+.sidebar-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 15px;
+}
+
+.menu-item.salir {
+    color: #ffd6d6;
+}
+
+.menu-item.salir i {
+    color: #ff9999;
+}
+
+.menu-item.salir:hover {
+    background-color: rgba(217, 48, 37, 0.25);
+    color: white;
+}
+
+/* =========================================================
+   MAIN CONTENT AREA
+========================================================= */
+.dashboard-main {
+    margin-left: 280px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-login-gradient, linear-gradient(135deg, #f0f4ff 0%, #e1ecfd 50%, #f7f9fc 100%));
+    min-height: 100vh;
+}
+
+/* HEADER SUPERIOR */
+.dashboard-header {
+    background: white;
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-saludo h1 {
+    font-size: 1.4rem;
+    color: var(--text-main);
+}
+
+.header-saludo h1 span {
+    color: var(--primary-color);
+}
+
+.header-saludo p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+.header-acciones {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.buscador-global {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.buscador-global i {
+    position: absolute;
+    left: 12px;
+    color: var(--text-muted);
+    width: 16px;
+    height: 16px;
+}
+
+.buscador-global input {
+    padding: 10px 14px 10px 38px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    background-color: var(--input-bg);
+    font-size: 0.9rem;
+    width: 260px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.buscador-global input:focus {
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.15);
+}
+
+.btn-notificacion {
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    color: var(--text-muted);
+    transition: background 0.2s;
+}
+
+.btn-notificacion:hover {
+    background: #e8f0fe;
+    color: var(--primary-color);
+}
+
+.punto-notif {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 8px;
+    height: 8px;
+    background-color: #d93025;
+    border-radius: 50%;
+}
+
+.perfil-usuario {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* ÁREA DE CONTENIDO */
+.dashboard-content {
+    padding: 35px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* TARJETAS KPI */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.kpi-card {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.kpi-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kpi-icon.azul { background: #e8f0fe; color: #1a73e8; }
+.kpi-icon.verde { background: #e6f4ea; color: #34a853; }
+.kpi-icon.naranja { background: #fef7e0; color: #fbbc05; }
+.kpi-icon.morado { background: #f3e8fd; color: #9334e6; }
+
+.kpi-info h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.kpi-info p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* SECCIÓN DE TABLA */
+.seccion-tabla {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.tabla-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tabla-header h2 {
+    font-size: 1.15rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.btn-ver-todos {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.btn-ver-todos:hover {
+    text-decoration: underline;
+}
+
+.tabla-contenedor {
+    overflow-x: auto;
+}
+
+.tabla-datos {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.92rem;
+}
+
+.tabla-datos th {
+    padding: 12px 15px;
+    background-color: #f8f9fa;
+    color: var(--text-muted);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tabla-datos td {
+    padding: 14px 15px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-main);
+}
+
+.tabla-datos tr:hover td {
+    background-color: #f8fbff;
+}
+
+/* BADGES DE ESTADO */
+.badge {
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.badge.verde { background: #e6f4ea; color: #137333; }
+.badge.amarillo { background: #fef7e0; color: #b06000; }
+.badge.azul { background: #e8f0fe; color: #1967d2; }
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-sidebar {
+        display: none;
+    }
+    .dashboard-main {
+        margin-left: 0;
+    }
+    .kpi-grid {
+        grid-template-columns: 1fr;
+    }
+    .dashboard-header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    .dashboard-content {
+        padding: 20px;
+    }
+}
+
+/* =========================================================
+   MENÚ LATERAL CON SCROLL MODERNO Y SUAVE
+========================================================= */
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    
+    /* Propiedades clave para activar el scroll */
+    overflow-y: auto;
+    max-height: calc(100vh - 180px); /* Ajusta dinámicamente el alto para que nunca desborde */
+    padding-right: 6px;
+    margin-bottom: 10px;
+
+    /* Para navegadores Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+}
+
+/* Estilo de la barra de desplazamiento para Chrome, Edge y Safari */
+.sidebar-menu::-webkit-scrollbar {
+    width: 5px; /* Ancho sutil */
+}
+
+.sidebar-menu::-webkit-scrollbar-track {
+    background: transparent; /* Fondo transparente para que no desentone con el azul */
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.35); /* Color blanco semitransparente muy elegante sobre el azul */
+    border-radius: 10px;
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.6); /* Se aclara un poco al pasar el cursor */
+}

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | ARCHIVEX</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/img/favicon-archivex.png">
+
+    <!-- CSS ARCHIVEX -->
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="cuerpo-dashboard">
+
+    <div class="dashboard-container">
+
+        <!-- =========================================
+             SIDEBAR LATERAL (AZUL INSTITUCIONAL)
+        ========================================== -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-logo">
+                <img src="/img/logo-archivex.png" alt="Logo ARCHIVEX">
+            </div>
+
+            <nav class="sidebar-menu">
+                <div class="menu-categoria">Principal</div>
+                <a href="dashboard.html" class="menu-item activo">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard / Resumen</span>
+                </a>
+
+                <div class="menu-categoria">Gestión Documental</div>
+                <a href="recepcion.html" class="menu-item">
+                    <i data-lucide="inbox"></i>
+                    <span>Recepción de Documentos</span>
+                </a>
+                <a href="empresas.html" class="menu-item">
+                    <i data-lucide="building-2"></i>
+                    <span>Gestión de Empresas / Terceros</span>
+                </a>
+                <a href="radicacion.html" class="menu-item">
+                    <i data-lucide="file-plus-2"></i>
+                    <span>Radicación y Correspondencia</span>
+                </a>
+                <a href="digitalizacion.html" class="menu-item">
+                    <i data-lucide="scan"></i>
+                    <span>Digitalización e Indexación</span>
+                </a>
+                <a href="clasificacion.html" class="menu-item">
+                    <i data-lucide="folder-tree"></i>
+                    <span>TRD (Tablas de Retención)</span>
+                </a>
+                <a href="expedientes.html" class="menu-item">
+                    <i data-lucide="folder-open"></i>
+                    <span>Gestión de Expedientes</span>
+                </a>
+                <a href="prestamos.html" class="menu-item">
+                    <i data-lucide="book-open-check"></i>
+                    <span>Préstamos y Consultas</span>
+                </a>
+                <a href="transferencias.html" class="menu-item">
+                    <i data-lucide="arrow-right-left"></i>
+                    <span>Transferencias Documentales</span>
+                </a>
+                <a href="disposicion.html" class="menu-item">
+                    <i data-lucide="trash-2"></i>
+                    <span>Disposición Final / Eliminación</span>
+                </a>
+
+                <div class="menu-categoria">Administración</div>
+                <a href="usuarios.html" class="menu-item">
+                    <i data-lucide="users"></i>
+                    <span>Gestión de Usuarios</span>
+                </a>
+                <a href="seguridad.html" class="menu-item">
+                    <i data-lucide="shield-check"></i>
+                    <span>Seguridad y Autorizaciones</span>
+                </a>
+                <a href="reportes.html" class="menu-item">
+                    <i data-lucide="bar-chart-3"></i>
+                    <span>Reportes y Auditoría</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" class="menu-item salir" id="btnCerrarSesion">
+                    <i data-lucide="log-out"></i>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </div>
+        </aside>
+
+
+        <!-- =========================================
+             CONTENIDO PRINCIPAL
+        ========================================== -->
+        <main class="dashboard-main">
+
+            <!-- HEADER SUPERIOR -->
+            <header class="dashboard-header">
+                <div class="header-saludo">
+                    <h1>Bienvenido, <span id="nombreFuncionario">Funcionario Archivo</span></h1>
+                    <p>Panel de Gestión Documental Institucional</p>
+                </div>
+
+                <div class="header-acciones">
+                    <div class="buscador-global">
+                        <i data-lucide="search"></i>
+                        <input type="text" placeholder="Buscar radicado, expediente...">
+                    </div>
+                    <button class="btn-notificacion" aria-label="Notificaciones">
+                        <i data-lucide="bell"></i>
+                        <span class="punto-notif"></span>
+                    </button>
+                    <div class="perfil-usuario">
+                        <div class="avatar-iniciales" id="inicialesUsuario">FA</div>
+                    </div>
+                </div>
+            </header>
+
+
+            <!-- ÁREA DE ESTADÍSTICAS Y CONTENIDO -->
+            <div class="dashboard-content">
+
+                <!-- TARJETAS DE RESUMEN (KPIs) -->
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon azul">
+                            <i data-lucide="file-text"></i>
+                        </div>
+                        <div class="kpi-info">
+                            <h3 id="totalRadicados">1,248</h3>
+                            <p>Documentos Radicados</p>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon verde">
+                            <i data-lucide="check-circle-2"></i>
+                        </div>
+                        <div class="kpi-info">
+                            <h3 id="totalDigitalizados">984</h3>
+                            <p>Digitalizados y Validados</p>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon naranja">
+                            <i data-lucide="clock"></i>
+                        </div>
+                        <div class="kpi-info">
+                            <h3 id="totalPendientes">264</h3>
+                            <p>Pendientes de Clasificación</p>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon morado">
+                            <i data-lucide="folder-archive"></i>
+                        </div>
+                        <div class="kpi-info">
+                            <h3 id="totalExpedientes">45</h3>
+                            <p>Expedientes Activos</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- TABLA DE ÚLTIMOS DOCUMENTOS -->
+                <div class="seccion-tabla">
+                    <div class="tabla-header">
+                        <h2>Últimos Radicados Recientes</h2>
+                        <a href="radicacion.html" class="btn-ver-todos">Ver todos</a>
+                    </div>
+
+                    <div class="tabla-contenedor">
+                        <table class="tabla-datos">
+                            <thead>
+                                <tr>
+                                    <th>Nº Radicado</th>
+                                    <th>Remitente / Entidad</th>
+                                    <th>Asunto</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaUltimosRadicados"></tbody>
+                                <tr>
+                                    <td><strong>RAD-2026-0849</strong></td>
+                                    <td>Ministerio de Educación</td>
+                                    <td>Solicitud de actualización de archivo institucional</td>
+                                    <td>11 Nov 2026</td>
+                                    <td><span class="badge verde">Digitalizado</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>RAD-2026-0848</strong></td>
+                                    <td>Alcaldía Municipal</td>
+                                    <td>Entrega de contratos de obra pública vigencia 2025</td>
+                                    <td>10 Nov 2026</td>
+                                    <td><span class="badge amarillo">Pendiente</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>RAD-2026-0847</strong></td>
+                                    <td>Cámara de Comercio</td>
+                                    <td>Certificado de existencia y representación legal</td>
+                                    <td>10 Nov 2026</td>
+                                    <td><span class="badge verde">Digitalizado</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>RAD-2026-0846</strong></td>
+                                    <td>Ciudadano Juan Pérez</td>
+                                    <td>Petición de historia laboral y cesantías</td>
+                                    <td>09 Nov 2026</td>
+                                    <td><span class="badge azul">En revisión</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- ACTIVAR ICONOS LUCIDE -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <script src="../js/dashboard.js"></script>
+    
+</body>
+</html>

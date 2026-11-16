@@ -1,0 +1,577 @@
+/* =========================================================
+ARCHIVEX
+FORMULARIOS DE ACCESO
+LOGIN / REGISTRO / RECUPERACIÓN
+========================================================= */
+
+/* =========================================================
+
+1. PÁGINA DE ACCESO
+   ========================================================= */
+
+.pagina-acceso {
+min-height: 100vh;
+background:
+    linear-gradient(
+        135deg,
+        #F5F7FA 0%,
+        #EEF6FC 50%,
+        #C2DBF0 100%
+    );
+}
+
+/* =========================================================
+2. CONTENEDOR
+========================================================= */
+
+.contenedor-acceso {
+width: min(1180px, 94%);
+min-height: 100vh;
+margin: 0 auto;
+display: grid;
+grid-template-columns: 1fr 1fr;
+align-items: center;
+gap: 45px;
+padding: 35px 0;
+}
+
+/* =========================================================
+3. PANEL DE IDENTIDAD
+========================================================= */
+
+.panel-identidad {
+min-height: 650px;
+padding: 50px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+background:
+    linear-gradient(
+        145deg,
+        #596CF0 0%,
+        #4659D8 55%,
+        #3046B8 100%
+    );
+border-radius: 24px;
+color: #FFFFFF;
+box-shadow: 0 20px 50px rgba(48, 70, 184, 0.18);
+overflow: hidden;
+position: relative;
+}
+
+/* Decoración */
+
+.panel-identidad::before {
+content: "";
+position: absolute;
+width: 280px;
+height: 280px;
+border-radius: 50%;
+background: rgba(149, 214, 237, 0.16);
+top: -100px;
+right: -100px;
+}
+
+.panel-identidad::after {
+content: "";
+position: absolute;
+width: 180px;
+height: 180px;
+border-radius: 50%;
+background: rgba(194, 219, 240, 0.12);
+bottom: -60px;
+left: -60px;
+}
+
+/* =========================================================
+4. LOGO
+========================================================= */
+
+.logo-acceso {
+position: relative;
+z-index: 2;
+display: inline-flex;
+width: fit-content;
+}
+
+.logo-acceso img {
+width: 190px;
+height: auto;
+object-fit: contain;
+}
+
+/* =========================================================
+5. CONTENIDO IDENTIDAD
+========================================================= */
+
+.identidad-contenido {
+position: relative;
+z-index: 2;
+max-width: 500px;
+}
+
+.identidad-etiqueta {
+display: inline-block;
+padding: 7px 13px;
+margin-bottom: 20px;
+border-radius: 50px;
+background: rgba(255, 255, 255, 0.14);
+border: 1px solid rgba(255, 255, 255, 0.22);
+color: #FFFFFF;
+font-size: 12px;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.8px;
+}
+
+.identidad-contenido h1 {
+font-size: 42px;
+line-height: 1.15;
+letter-spacing: -1px;
+margin-bottom: 20px;
+}
+
+.identidad-contenido h1 span {
+display: block;
+color: #95D6ED;
+}
+
+.identidad-contenido > p {
+color: rgba(255, 255, 255, 0.85);
+font-size: 15px;
+line-height: 1.8;
+margin-bottom: 32px;
+}
+
+/* =========================================================
+6. BENEFICIOS
+========================================================= */
+
+.beneficios-acceso {
+display: flex;
+flex-direction: column;
+gap: 18px;
+}
+
+.beneficio {
+display: flex;
+align-items: center;
+gap: 14px;
+}
+
+.beneficio-icono {
+width: 42px;
+height: 42px;
+flex-shrink: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+background: rgba(255, 255, 255, 0.13);
+border: 1px solid rgba(255, 255, 255, 0.16);
+border-radius: 10px;
+}
+
+.beneficio-icono svg {
+width: 20px;
+height: 20px;
+color: #95D6ED;
+}
+
+.beneficio strong {
+display: block;
+margin-bottom: 2px;
+font-size: 14px;
+}
+
+.beneficio span {
+display: block;
+color: rgba(255, 255, 255, 0.7);
+font-size: 12px;
+}
+
+/* =========================================================
+7. PIE DEL PANEL IDENTIDAD
+========================================================= */
+
+.identidad-pie {
+position: relative;
+z-index: 2;
+display: flex;
+justify-content: space-between;
+gap: 15px;
+padding-top: 20px;
+border-top: 1px solid rgba(255, 255, 255, 0.15);
+color: rgba(255, 255, 255, 0.65);
+font-size: 11px;
+}
+
+/* =========================================================
+8. PANEL LOGIN
+========================================================= */
+
+.panel-login {
+min-height: 650px;
+padding: 50px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+background: #FFFFFF;
+border: 1px solid #D9E2EC;
+border-radius: 24px;
+box-shadow: 0 20px 50px rgba(48, 70, 184, 0.08);
+}
+
+.login-contenido {
+width: 100%;
+max-width: 430px;
+margin: auto;
+}
+
+/* =========================================================
+9. ENCABEZADO LOGIN
+========================================================= */
+
+.login-encabezado {
+margin-bottom: 32px;
+}
+
+.login-icono {
+width: 48px;
+height: 48px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 18px;
+background: #EEF6FC;
+color: #596CF0;
+border: 1px solid #C2DBF0;
+border-radius: 12px;
+}
+
+.login-icono svg {
+width: 24px;
+height: 24px;
+}
+
+.login-encabezado h2 {
+margin-bottom: 8px;
+color: #24324A;
+font-size: 30px;
+line-height: 1.2;
+}
+
+.login-encabezado p {
+color: #667085;
+font-size: 14px;
+line-height: 1.6;
+}
+
+/* =========================================================
+10. FORMULARIO
+========================================================= */
+
+.formulario-acceso {
+display: flex;
+flex-direction: column;
+gap: 21px;
+}
+
+.campo {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+.campo label {
+color: #344054;
+font-size: 13px;
+font-weight: 700;
+}
+
+.campo-input {
+height: 48px;
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 0 14px;
+background: #FFFFFF;
+border: 1px solid #D9E2EC;
+border-radius: 9px;
+transition: border-color 0.2s ease,
+box-shadow 0.2s ease;
+}
+
+.campo-input:focus-within {
+border-color: #596CF0;
+box-shadow: 0 0 0 3px rgba(89, 108, 240, 0.12);
+}
+
+.campo-input > svg {
+width: 18px;
+height: 18px;
+flex-shrink: 0;
+color: #98A2B3;
+}
+
+.campo-input input {
+width: 100%;
+height: 100%;
+border: none;
+outline: none;
+background: transparent;
+color: #24324A;
+font-size: 14px;
+}
+
+.campo-input input::placeholder {
+color: #98A2B3;
+}
+
+/* =========================================================
+11. MOSTRAR CONTRASEÑA
+========================================================= */
+
+.boton-password {
+width: 32px;
+height: 32px;
+flex-shrink: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+border: none;
+background: transparent;
+color: #98A2B3;
+cursor: pointer;
+border-radius: 7px;
+}
+
+.boton-password:hover {
+background: #EEF6FC;
+color: #596CF0;
+}
+
+.boton-password svg {
+width: 18px;
+height: 18px;
+}
+
+/* =========================================================
+12. OPCIONES LOGIN
+========================================================= */
+
+.opciones-login {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 15px;
+margin-top: -3px;
+}
+
+.recordar {
+display: flex;
+align-items: center;
+gap: 8px;
+color: #667085;
+font-size: 12px;
+cursor: pointer;
+}
+
+.recordar input {
+width: 15px;
+height: 15px;
+accent-color: #596CF0;
+cursor: pointer;
+}
+
+.opciones-login > a {
+color: #596CF0;
+font-size: 12px;
+font-weight: 700;
+}
+
+.opciones-login > a:hover {
+color: #4659D8;
+text-decoration: underline;
+}
+
+/* =========================================================
+13. BOTÓN LOGIN
+========================================================= */
+
+.boton-login {
+width: 100%;
+height: 49px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 9px;
+margin-top: 4px;
+border: none;
+border-radius: 9px;
+background: #596CF0;
+color: #FFFFFF;
+font-size: 14px;
+font-weight: 700;
+cursor: pointer;
+transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.boton-login svg {
+width: 18px;
+height: 18px;
+}
+
+.boton-login:hover {
+background: #4659D8;
+transform: translateY(-1px);
+}
+
+/* =========================================================
+14. REGISTRO
+========================================================= */
+
+.registro-acceso {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 5px;
+margin-top: 28px;
+color: #667085;
+font-size: 13px;
+}
+
+.registro-acceso a {
+color: #596CF0;
+font-weight: 700;
+}
+
+.registro-acceso a:hover {
+text-decoration: underline;
+}
+
+/* =========================================================
+15. MENSAJE DE SEGURIDAD
+========================================================= */
+
+.mensaje-seguridad {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 7px;
+margin-top: 28px;
+padding-top: 20px;
+border-top: 1px solid #EAECF0;
+color: #98A2B3;
+font-size: 11px;
+text-align: center;
+}
+
+.mensaje-seguridad svg {
+width: 15px;
+height: 15px;
+color: #12B76A;
+}
+
+/* =========================================================
+16. FOOTER LOGIN
+========================================================= */
+
+.login-footer {
+display: flex;
+justify-content: space-between;
+gap: 15px;
+padding-top: 20px;
+border-top: 1px solid #EAECF0;
+color: #98A2B3;
+font-size: 10px;
+}
+
+/* =========================================================
+17. RESPONSIVE TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+.contenedor-acceso {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+}
+
+
+.panel-identidad {
+    min-height: auto;
+    padding: 40px;
+}
+
+
+.identidad-contenido {
+    margin: 50px 0;
+}
+
+
+.panel-login {
+    min-height: auto;
+    padding: 40px;
+}
+}
+
+/* =========================================================
+18. RESPONSIVE CELULAR
+========================================================= */
+
+@media (max-width: 550px) {
+.contenedor-acceso {
+    width: 94%;
+    padding: 15px 0;
+}
+
+
+.panel-identidad,
+.panel-login {
+    padding: 28px 22px;
+    border-radius: 18px;
+}
+
+.logo-acceso img {
+    width: 155px;
+}
+
+.identidad-contenido {
+    margin: 40px 0;
+}
+
+.identidad-contenido h1 {
+    font-size: 32px;
+}
+
+.identidad-contenido > p {
+    font-size: 14px;
+}
+
+.identidad-pie,
+.login-footer {
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+
+.login-encabezado h2 {
+    font-size: 27px;
+}
+
+
+.opciones-login {
+    align-items: flex-start;
+
+    flex-direction: column;
+}
+
+}
+
+/* =========================================================
+FIN FORMULARIOS ARCHIVEX
+========================================================= */

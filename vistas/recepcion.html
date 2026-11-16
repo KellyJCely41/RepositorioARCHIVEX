@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recepción de Documentos | ARCHIVEX</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/img/favicon-archivex.png">
+
+    <!-- CSS ARCHIVEX -->
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/recepcion.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="cuerpo-dashboard">
+
+    <div class="dashboard-container">
+
+        <!-- =========================================
+             SIDEBAR LATERAL (AZUL INSTITUCIONAL)
+        ========================================== -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-logo">
+                <img src="/img/logo-archivex.png" alt="Logo ARCHIVEX">
+            </div>
+
+            <nav class="sidebar-menu">
+                <div class="menu-categoria">Principal</div>
+                <a href="dashboard.html" class="menu-item">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard / Resumen</span>
+                </a>
+
+                <div class="menu-categoria">Gestión Documental</div>
+                <a href="recepcion.html" class="menu-item activo">
+                    <i data-lucide="inbox"></i>
+                    <span>Recepción de Documentos</span>
+                </a>
+                <a href="empresas.html" class="menu-item">
+                    <i data-lucide="building-2"></i>
+                    <span>Gestión de Empresas / Terceros</span>
+                </a>
+                <a href="radicacion.html" class="menu-item">
+                    <i data-lucide="file-plus-2"></i>
+                    <span>Radicación y Correspondencia</span>
+                </a>
+                <a href="digitalizacion.html" class="menu-item">
+                    <i data-lucide="scan"></i>
+                    <span>Digitalización e Indexación</span>
+                </a>
+                <a href="clasificacion.html" class="menu-item">
+                    <i data-lucide="folder-tree"></i>
+                    <span>TRD (Tablas de Retención)</span>
+                </a>
+                <a href="expedientes.html" class="menu-item">
+                    <i data-lucide="folder-open"></i>
+                    <span>Gestión de Expedientes</span>
+                </a>
+                <a href="prestamos.html" class="menu-item">
+                    <i data-lucide="book-open-check"></i>
+                    <span>Préstamos y Consultas</span>
+                </a>
+                <a href="transferencias.html" class="menu-item">
+                    <i data-lucide="arrow-right-left"></i>
+                    <span>Transferencias Documentales</span>
+                </a>
+                <a href="disposicion.html" class="menu-item">
+                    <i data-lucide="trash-2"></i>
+                    <span>Disposición Final / Eliminación</span>
+                </a>
+
+                <div class="menu-categoria">Administración</div>
+                <a href="usuarios.html" class="menu-item">
+                    <i data-lucide="users"></i>
+                    <span>Gestión de Usuarios</span>
+                </a>
+                <a href="seguridad.html" class="menu-item">
+                    <i data-lucide="shield-check"></i>
+                    <span>Seguridad y Autorizaciones</span>
+                </a>
+                <a href="reportes.html" class="menu-item">
+                    <i data-lucide="bar-chart-3"></i>
+                    <span>Reportes y Auditoría</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" class="menu-item salir" id="btnCerrarSesion"></a>
+                    <i data-lucide="log-out"></i>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </div>
+        </aside>
+
+
+        <!-- =========================================
+             CONTENIDO PRINCIPAL - RECEPCIÓN
+        ========================================== -->
+        <main class="dashboard-main">
+
+            <!-- HEADER SUPERIOR -->
+            <header class="dashboard-header">
+                <div class="header-saludo">
+                    <h1>Recepción de <span>Documentos</span></h1>
+                    <p>Módulo de ventanilla única y entrada de correspondencia</p>
+                </div>
+
+                <div class="header-acciones">
+                    <div class="buscador-global">
+                        <i data-lucide="search"></i>
+                        <input type="text" placeholder="Buscar radicado, remitente...">
+                    </div>
+                    <button class="btn-notificacion" aria-label="Notificaciones">
+                        <i data-lucide="bell"></i>
+                        <span class="punto-notif"></span>
+                    </button>
+                    <div class="perfil-usuario">
+                        <div class="avatar-iniciales" id="inicialesUsuario">FA</div>
+                    </div>
+                </div>
+            </header>
+
+
+            <!-- ÁREA DE FORMULARIO Y REGISTRO -->
+            <div class="dashboard-content">
+
+                <div class="tarjeta-formulario-contenedor">
+                    <div class="tarjeta-encabezado">
+                        <div class="titulo-icono-seccion">
+                            <i data-lucide="inbox"></i>
+                            <div>
+                                <h2>Registro de Nueva Entrada</h2>
+                                <p>Ingrese los datos del documento recibido en ventanilla o canal digital</p>
+                            </div>
+                        </div>
+                        <span class="badge azul">Ventanilla Principal</span>
+                    </div>
+
+                    <!-- FORMULARIO DE RECEPCIÓN -->
+                    <form class="formulario-recepcion" id="formRecepcion">
+
+                        <div class="grid-recepcion">
+
+                            <!-- TIPO DE REMITENTE -->
+                            <div class="campo-formulario">
+                                <label for="tipoRemitente">Tipo de Remitente</label>
+                                <div class="input-icono">
+                                    <i data-lucide="user-check"></i>
+                                    <select id="tipoRemitente" name="tipoRemitente" required>
+                                        <option value="" disabled selected>Seleccione tipo</option>
+                                        <option value="externo">Entidad Externa / Empresa</option>
+                                        <option value="ciudadano">Ciudadano / Particular</option>
+                                        <option value="interno">Dependencia Interna</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- IDENTIFICACIÓN / NIT -->
+                            <div class="campo-formulario">
+                                <label for="identificacionRemitente">NIT o Cédula del Remitente</label>
+                                <div class="input-icono">
+                                    <i data-lucide="hash"></i>
+                                    <input type="text" id="identificacionRemitente" name="identificacionRemitente" placeholder="Ej: 900.123.456-1" required>
+                                </div>
+                            </div>
+
+                            <!-- NOMBRE DEL REMITENTE -->
+                            <div class="campo-formulario span-2">
+                                <label for="nombreRemitente">Nombre de la Entidad o Ciudadano</label>
+                                <div class="input-icono">
+                                    <i data-lucide="building-2"></i>
+                                    <input type="text" id="nombreRemitente" name="nombreRemitente" placeholder="Nombre completo o razón social" required>
+                                </div>
+                            </div>
+
+                            <!-- MEDIO DE RECEPCIÓN -->
+                            <div class="campo-formulario">
+                                <label for="medioRecepcion">Medio de Recepción</label>
+                                <div class="input-icono">
+                                    <i data-lucide="send"></i>
+                                    <select id="medioRecepcion" name="medioRecepcion" required>
+                                        <option value="" disabled selected>Seleccione medio</option>
+                                        <option value="fisico">Físico (Ventanilla)</option>
+                                        <option value="correo">Correo Electrónico</option>
+                                        <option value="web">Plataforma Web / PQR</option>
+                                        <option value="mensajeria">Mensajería Expresa</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- NÚMERO DE FOLIOS -->
+                            <div class="campo-formulario">
+                                <label for="folios">Número de Folios</label>
+                                <div class="input-icono">
+                                    <i data-lucide="file-stack"></i>
+                                    <input type="number" id="folios" name="folios" placeholder="Ej: 5" min="1" required>
+                                </div>
+                            </div>
+
+                            <!-- DEPENDENCIA DESTINO -->
+                            <div class="campo-formulario span-2">
+                                <label for="dependenciaDestino">Dependencia Destino</label>
+                                <div class="input-icono">
+                                    <i data-lucide="git-branch"></i>
+                                    <select id="dependenciaDestino" name="dependenciaDestino" required>
+                                        <option value="" disabled selected>Seleccione dependencia destino</option>
+                                        <option value="archivo">Archivo General e Histórico</option>
+                                        <option value="juridica">Oficina Jurídica</option>
+                                        <option value="financiera">Gestión Financiera</option>
+                                        <option value="talento">Talento Humano</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- ASUNTO -->
+                            <div class="campo-formulario span-full">
+                                <label for="asunto">Asunto / Resumen del Documento</label>
+                                <textarea id="asunto" name="asunto" rows="3" placeholder="Describa brevemente el contenido u objeto del documento recibido..." required></textarea>
+                            </div>
+
+                            <!-- ADJUNTAR ARCHIVO / SOPORTE -->
+                            <div class="campo-formulario span-full">
+                                <label>Archivo Escaneado o Soporte Inicial</label>
+                                <div class="zona-carga">
+                                    <i data-lucide="upload-cloud"></i>
+                                    <p>Arrastre el archivo digital aquí o <span>explore sus archivos</span></p>
+                                    <span class="formato-info">Formatos permitidos: PDF, JPG, PNG (Máx. 25MB)</span>
+                                    <input type="file" id="archivoSoporte" name="archivoSoporte" class="input-file-oculto">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- ACCIONES DEL FORMULARIO -->
+                        <div class="acciones-formulario">
+                            <button type="reset" class="btn-secundario">Limpiar Formulario</button>
+                            <button type="submit" class="btn-primario">
+                                <i data-lucide="check"></i>
+                                <span>Registrar Recepción</span>
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- ACTIVAR ICONOS LUCIDE -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <script src="../js/recepcion.js"></script>
+
+</body>
+</html>

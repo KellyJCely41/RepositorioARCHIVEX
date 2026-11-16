@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radicación y Correspondencia | ARCHIVEX</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/img/favicon-archivex.png">
+
+    <!-- CSS ARCHIVEX -->
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/radicacion.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="cuerpo-dashboard">
+
+    <div class="dashboard-container">
+
+        <!-- =========================================
+             SIDEBAR LATERAL (AZUL INSTITUCIONAL)
+        ========================================== -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-logo">
+                <img src="/img/logo-archivex.png" alt="Logo ARCHIVEX">
+            </div>
+
+            <nav class="sidebar-menu">
+                <div class="menu-categoria">Principal</div>
+                <a href="dashboard.html" class="menu-item">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard / Resumen</span>
+                </a>
+
+                <div class="menu-categoria">Gestión Documental</div>
+                <a href="recepcion.html" class="menu-item">
+                    <i data-lucide="inbox"></i>
+                    <span>Recepción de Documentos</span>
+                </a>
+                <a href="empresas.html" class="menu-item">
+                    <i data-lucide="building-2"></i>
+                    <span>Gestión de Empresas / Terceros</span>
+                </a>
+                <a href="radicacion.html" class="menu-item activo">
+                    <i data-lucide="file-plus-2"></i>
+                    <span>Radicación y Correspondencia</span>
+                </a>
+                <a href="digitalizacion.html" class="menu-item">
+                    <i data-lucide="scan"></i>
+                    <span>Digitalización e Indexación</span>
+                </a>
+                <a href="clasificacion.html" class="menu-item">
+                    <i data-lucide="folder-tree"></i>
+                    <span>TRD (Tablas de Retención)</span>
+                </a>
+                <a href="expedientes.html" class="menu-item">
+                    <i data-lucide="folder-open"></i>
+                    <span>Gestión de Expedientes</span>
+                </a>
+                <a href="prestamos.html" class="menu-item">
+                    <i data-lucide="book-open-check"></i>
+                    <span>Préstamos y Consultas</span>
+                </a>
+                <a href="transferencias.html" class="menu-item">
+                    <i data-lucide="arrow-right-left"></i>
+                    <span>Transferencias Documentales</span>
+                </a>
+                <a href="disposicion.html" class="menu-item">
+                    <i data-lucide="trash-2"></i>
+                    <span>Disposición Final / Eliminación</span>
+                </a>
+
+                <div class="menu-categoria">Administración</div>
+                <a href="usuarios.html" class="menu-item">
+                    <i data-lucide="users"></i>
+                    <span>Gestión de Usuarios</span>
+                </a>
+                <a href="seguridad.html" class="menu-item">
+                    <i data-lucide="shield-check"></i>
+                    <span>Seguridad y Autorizaciones</span>
+                </a>
+                <a href="reportes.html" class="menu-item">
+                    <i data-lucide="bar-chart-3"></i>
+                    <span>Reportes y Auditoría</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" class="menu-item salir" id="btnCerrarSesion">
+                    <i data-lucide="log-out"></i>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </div>
+        </aside>
+
+
+        <!-- =========================================
+             CONTENIDO PRINCIPAL - RADICACIÓN
+        ========================================== -->
+        <main class="dashboard-main">
+
+            <!-- HEADER SUPERIOR -->
+            <header class="dashboard-header">
+                <div class="header-saludo">
+                    <h1>Radicación de <span>Correspondencia</span></h1>
+                    <p>Asignación oficial de número de radicado y trámite de documentos</p>
+                </div>
+
+                <div class="header-acciones">
+                    <div class="buscador-global">
+                        <i data-lucide="search"></i>
+                        <input type="search" id="buscarRadicado" placeholder="Buscar radicado, asunto...">
+                    </div>
+                    <button class="btn-notificacion" aria-label="Notificaciones">
+                        <i data-lucide="bell"></i>
+                        <span class="punto-notif"></span>
+                    </button>
+                    <div class="perfil-usuario">
+                        <div class="avatar-iniciales" id="inicialesUsuario">FA</div>
+                    </div>
+                </div>
+            </header>
+
+
+            <!-- ÁREA DE FORMULARIO Y RADICACIÓN -->
+            <div class="dashboard-content">
+
+                <div class="tarjeta-formulario-contenedor">
+                    <div class="tarjeta-encabezado">
+                        <div class="titulo-icono-seccion">
+                            <i data-lucide="file-plus-2"></i>
+                            <div>
+                                <h2>Generar Nuevo Radicado</h2>
+                                <p>Complete los datos obligatorios para matricular el documento en el sistema</p>
+                            </div>
+                        </div>
+                        <span class="badge verde" id="consecutivoRadicado"> Consecutivo Automático </span>
+                    </div>
+
+                    <!-- FORMULARIO DE RADICACIÓN -->
+                    <form class="formulario-radicacion" id="formRadicacion">
+
+                        <div class="grid-radicacion">
+
+                            <!-- TIPO DE RADICACIÓN -->
+                            <div class="campo-formulario">
+                                <label for="tipoRadicacion">Tipo de Correspondencia</label>
+                                <div class="input-icono">
+                                    <i data-lucide="layers"></i>
+                                    <select id="tipoRadicacion" name="tipoRadicacion" required>
+                                        <option value="" disabled selected>Seleccione tipo</option>
+                                        <option value="entrada">Radicado de Entrada (Externo)</option>
+                                        <option value="salida">Radicado de Salida (Oficial)</option>
+                                        <option value="interno">Memorando / Comunicación Interna</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- CANAL DE ORIGEN -->
+                            <div class="campo-formulario">
+                                <label for="canalOrigen">Canal de Ingreso / Envío</label>
+                                <div class="input-icono">
+                                    <i data-lucide="globe"></i>
+                                    <select id="canalOrigen" name="canalOrigen" required>
+                                        <option value="" disabled selected>Seleccione canal</option>
+                                        <option value="ventanilla">Ventanilla Presencial</option>
+                                        <option value="correo">Correo Electrónico Institucional</option>
+                                        <option value="web">Plataforma PQR / Web</option>
+                                        <option value="fisico">Correo Postal / Mensajería</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- REMITENTE / DESTINATARIO -->
+                            <div class="campo-formulario span-2">
+                                <label for="terceroRadicacion">Remitente / Entidad (o Destinatario si es salida)</label>
+                                <div class="input-icono">
+                                    <i data-lucide="user"></i>
+                                    <input type="text" id="terceroRadicacion" name="terceroRadicacion" placeholder="Nombre de la entidad, empresa o ciudadano" required>
+                                </div>
+                            </div>
+
+                            <!-- TRD - SERIE DOCUMENTAL -->
+                            <div class="campo-formulario">
+                                <label for="serieTrd">Serie Documental (TRD)</label>
+                                <div class="input-icono">
+                                    <i data-lucide="folder-tree"></i>
+                                    <select id="serieTrd" name="serieTrd" required>
+                                        <option value="" disabled selected>Seleccione serie TRD</option>
+                                        <option value="100">100 - Actas y Resoluciones</option>
+                                        <option value="200">200 - Contratos y Convenios</option>
+                                        <option value="300">300 - Historias Laborales</option>
+                                        <option value="400">400 - Correspondencia General</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- TRD - SUBCATEGORÍA / SUBSERIE -->
+                            <div class="campo-formulario">
+                                <label for="subserieTrd">Subserie / Tipo Documental</label>
+                                <div class="input-icono">
+                                    <i data-lucide="file-text"></i>
+                                    <select id="subserieTrd" name="subserieTrd" required>
+                                        <option value="" disabled selected>Seleccione subserie</option>
+                                        <option value="peticiones">Peticiones, Quejas y Reclamos (PQR)</option>
+                                        <option value="oficios">Oficios Radicados</option>
+                                        <option value="informes">Informes de Gestión</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- FUNCIONARIO ASIGNADO / RESPONSABLE -->
+                            <div class="campo-formulario">
+                                <label for="funcionarioResponsable">Funcionario Responsable</label>
+                                <div class="input-icono">
+                                    <i data-lucide="user-check"></i>
+                                    <select id="funcionarioResponsable" name="funcionarioResponsable" required>
+                                        <option value="" disabled selected>Asignar funcionario</option>
+                                        <option value="carlos">Carlos Gómez (Archivo Central)</option>
+                                        <option value="ana">Ana María Pérez (Jurídica)</option>
+                                        <option value="luis">Luis Fernando Torres (Financiera)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- TIEMPO DE RESPUESTA (DÍAS HÁBILES) -->
+                            <div class="campo-formulario">
+                                <label for="diasRespuesta">Plazo de Respuesta (Días Hábil)</label>
+                                <div class="input-icono">
+                                    <i data-lucide="calendar-clock"></i>
+                                    <input type="number" id="diasRespuesta" name="diasRespuesta" placeholder="Ej: 15 días" min="1" value="10" required>
+                                </div>
+                            </div>
+
+                            <!-- ASUNTO DEL RADICADO -->
+                            <div class="campo-formulario span-full">
+                                <label for="asuntoRadicado">Asunto o Descripción del Documento</label>
+                                <textarea id="asuntoRadicado" name="asuntoRadicado" rows="3" placeholder="Detalle claramente el objeto del trámite o contenido del documento..." required></textarea>
+                            </div>
+
+                            <!-- OBSERVACIONES ADICIONALES -->
+                            <div class="campo-formulario span-full">
+                                <label for="observaciones">Observaciones o Notas Internas (Opcional)</label>
+                                <textarea id="observaciones" name="observaciones" rows="2" placeholder="Notas adicionales para el seguimiento del expediente..."></textarea>
+                            </div>
+
+                        </div>
+
+                        <!-- ACCIONES DEL FORMULARIO -->
+                        <div class="acciones-formulario">
+                            <button type="reset" class="btn-secundario">Limpiar Campos</button>
+                            <button type="submit" class="btn-primario">
+                                <i data-lucide="check-circle"></i>
+                                <span>Radicar y Generar Sticker</span>
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- ACTIVAR ICONOS LUCIDE -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <script src="../js/radicacion.js"></script>
+
+</body>
+</html>

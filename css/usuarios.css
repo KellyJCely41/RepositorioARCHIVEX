@@ -1,0 +1,141 @@
+/* =========================================================
+   ESTILOS PARA EL MÓDULO DE GESTIÓN DE USUARIOS
+========================================================= */
+
+/* TARJETA SUPERIOR DE FILTROS */
+.tarjeta-filtro-usuarios {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.grupo-busqueda-usu {
+    flex: 1;
+    max-width: 450px;
+}
+
+.grupo-busqueda-usu .input-icono {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.grupo-busqueda-usu .input-icono i {
+    position: absolute;
+    left: 14px;
+    width: 18px;
+    height: 18px;
+    color: var(--text-muted);
+}
+
+.grupo-busqueda-usu .input-icono input {
+    width: 100%;
+    padding: 11px 14px 11px 42px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--input-bg);
+    font-size: 0.9rem;
+    color: var(--text-main);
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.grupo-busqueda-usu .input-icono input:focus {
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.12);
+}
+
+/* FORMATO DE CELDAS PARA USUARIOS */
+.usu-celda-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar-tabla {
+    width: 36px;
+    height: 36px;
+    background: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.usu-celda-titulo {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.usu-sub {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+/* BADGES PERSONALIZADOS */
+.badge.morado {
+    background: #f3e8fd;
+    color: #9334e6;
+}
+
+.badge.amarillo {
+    background: #fef7e0;
+    color: #b06000;
+}
+
+.badge.rojo {
+    background: #fce8e6;
+    color: #c5221f;
+}
+
+.acciones-fila-grupo {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-accion-tabla {
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.2s;
+}
+
+.btn-accion-tabla i {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-accion-tabla:hover {
+    background: #e8f0fe;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .tarjeta-filtro-usuarios {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .grupo-busqueda-usu {
+        width: 100%;
+        max-width: 100%;
+    }
+}

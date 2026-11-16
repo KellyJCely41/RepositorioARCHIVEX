@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Empresas y Terceros | ARCHIVEX</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/img/favicon-archivex.png">
+
+    <!-- CSS ARCHIVEX -->
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/empresas.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="cuerpo-dashboard">
+
+    <div class="dashboard-container">
+
+        <!-- =========================================
+             SIDEBAR LATERAL (AZUL INSTITUCIONAL)
+        ========================================== -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-logo">
+                <img src="/img/logo-archivex.png" alt="Logo ARCHIVEX">
+            </div>
+
+            <nav class="sidebar-menu">
+                <div class="menu-categoria">Principal</div>
+                <a href="dashboard.html" class="menu-item">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard / Resumen</span>
+                </a>
+
+                <div class="menu-categoria">Gestión Documental</div>
+                <a href="recepcion.html" class="menu-item">
+                    <i data-lucide="inbox"></i>
+                    <span>Recepción de Documentos</span>
+                </a>
+                <a href="empresas.html" class="menu-item activo">
+                    <i data-lucide="building-2"></i>
+                    <span>Empresas / Terceros</span>
+                </a>
+                <a href="radicacion.html" class="menu-item">
+                    <i data-lucide="file-plus-2"></i>
+                    <span>Radicación y Correspondencia</span>
+                </a>
+                <a href="digitalizacion.html" class="menu-item">
+                    <i data-lucide="scan"></i>
+                    <span>Digitalización e Indexación</span>
+                </a>
+                <a href="clasificacion.html" class="menu-item">
+                    <i data-lucide="folder-tree"></i>
+                    <span>TRD (Tablas de Retención)</span>
+                </a>
+                <a href="expedientes.html" class="menu-item">
+                    <i data-lucide="folder-open"></i>
+                    <span>Gestión de Expedientes</span>
+                </a>
+                <a href="prestamos.html" class="menu-item">
+                    <i data-lucide="book-open-check"></i>
+                    <span>Préstamos y Consultas</span>
+                </a>
+                <a href="transferencias.html" class="menu-item">
+                    <i data-lucide="arrow-right-left"></i>
+                    <span>Transferencias Documentales</span>
+                </a>
+                <a href="disposicion.html" class="menu-item">
+                    <i data-lucide="trash-2"></i>
+                    <span>Disposición Final / Eliminación</span>
+                </a>
+
+                <div class="menu-categoria">Administración</div>
+                <a href="usuarios.html" class="menu-item">
+                    <i data-lucide="users"></i>
+                    <span>Gestión de Usuarios</span>
+                </a>
+                <a href="seguridad.html" class="menu-item">
+                    <i data-lucide="shield-check"></i>
+                    <span>Seguridad y Autorizaciones</span>
+                </a>
+                <a href="reportes.html" class="menu-item">
+                    <i data-lucide="bar-chart-3"></i>
+                    <span>Reportes y Auditoría</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" class="menu-item salir" id="btnCerrarSesion">
+                    <i data-lucide="log-out"></i>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </div>
+        </aside>
+
+
+        <!-- =========================================
+             CONTENIDO PRINCIPAL - EMPRESAS
+        ========================================== -->
+        <main class="dashboard-main">
+
+            <!-- HEADER SUPERIOR -->
+            <header class="dashboard-header">
+                <div class="header-saludo">
+                    <h1>Directorio de <span>Empresas y Terceros</span></h1>
+                    <p>Administración de entidades externas, remitentes y contactos institucionales</p>
+                </div>
+
+                <div class="header-acciones">
+                    <div class="buscador-global">
+                        <i data-lucide="search"></i>
+                        <input type="text" placeholder="Buscar empresa, NIT...">
+                    </div>
+                    <button class="btn-notificacion" aria-label="Notificaciones">
+                        <i data-lucide="bell"></i>
+                        <span class="punto-notif"></span>
+                    </button>
+                    <div class="perfil-usuario">
+                        <div class="avatar-iniciales" id="inicialesUsuario">FA</div>
+                    </div>
+                </div>
+            </header>
+
+
+            <!-- ÁREA DE CONTENIDO EMPRESAS -->
+            <div class="dashboard-content">
+
+                <!-- TARJETA SUPERIOR DE BÚSQUEDA Y ACCIÓN -->
+                <div class="tarjeta-filtro-empresas">
+                    <div class="grupo-busqueda-emp">
+                        <div class="input-icono">
+                            <i data-lucide="search"></i>
+                            <input type="search" id="buscarEmpresa" placeholder="Buscar por razón social o NIT...">
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-primario" id="btnNuevaEmpresa">
+                        <i data-lucide="building"></i>
+                        <span>Registrar Nueva Empresa</span>
+                    </button>
+                </div>
+
+
+                <!-- LISTADO / TABLA DE EMPRESAS -->
+                <div class="seccion-tabla">
+                    <div class="tabla-header">
+                        <h2>Entidades y Remitentes Registrados</h2>
+                        <span class="badge verde">Directorio Activo</span>
+                    </div>
+
+                    <div class="tabla-contenedor">
+                        <table class="tabla-datos">
+                            <thead>
+                                <tr>
+                                    <th>NIT / Identificación</th>
+                                    <th>Razón Social / Entidad</th>
+                                    <th>Representante / Contacto</th>
+                                    <th>Correo Electrónico</th>
+                                    <th>Teléfono</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaEmpresas">
+                                <tr>
+                                    <td><strong>900.123.456-1</strong></td>
+                                    <td>
+                                        <div class="emp-celda-titulo">Ministerio de Educación</div>
+                                        <span class="emp-sub">Entidad Pública</span>
+                                    </td>
+                                    <td>Dra. Andrea Morales</td>
+                                    <td>contacto@mineducacion.gov.co</td>
+                                    <td>+57 (601) 3824500</td>
+                                    <td>
+                                        <div class="acciones-fila-grupo">
+                                            <button class="btn-accion-tabla" title="Editar Empresa"><i data-lucide="edit-3"></i></button>
+                                            <button class="btn-accion-tabla" title="Ver Radicados Asociados"><i data-lucide="file-text"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>890.999.123-8</strong></td>
+                                    <td>
+                                        <div class="emp-celda-titulo">Cámara de Comercio</div>
+                                        <span class="emp-sub">Entidad Privada / Gremio</span>
+                                    </td>
+                                    <td>Carlos Julio Ruiz</td>
+                                    <td>atencion@camaradecomercio.org</td>
+                                    <td>+57 (608) 7421100</td>
+                                    <td>
+                                        <div class="acciones-fila-grupo">
+                                            <button class="btn-accion-tabla" title="Editar Empresa"><i data-lucide="edit-3"></i></button>
+                                            <button class="btn-accion-tabla" title="Ver Radicados Asociados"><i data-lucide="file-text"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>800.456.789-2</strong></td>
+                                    <td>
+                                        <div class="emp-celda-titulo">Alcaldía Municipal</div>
+                                        <span class="emp-sub">Entidad Gubernamental</span>
+                                    </td>
+                                    <td>Ing. Mario Alberto Silva</td>
+                                    <td>ventanilla@alcaldiaboyaca.gov.co</td>
+                                    <td>+57 (608) 7712030</td>
+                                    <td>
+                                        <div class="acciones-fila-grupo">
+                                            <button class="btn-accion-tabla" title="Editar Empresa"><i data-lucide="edit-3"></i></button>
+                                            <button class="btn-accion-tabla" title="Ver Radicados Asociados"><i data-lucide="file-text"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- ACTIVAR ICONOS LUCIDE -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <script src="../js/empresas.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Préstamos y Consultas | ARCHIVEX</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/img/favicon-archivex.png">
+
+    <!-- CSS ARCHIVEX -->
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/prestamos.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="cuerpo-dashboard">
+
+    <div class="dashboard-container">
+
+        <!-- =========================================
+             SIDEBAR LATERAL (AZUL INSTITUCIONAL)
+        ========================================== -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-logo">
+                <img src="/img/logo-archivex.png" alt="Logo ARCHIVEX">
+            </div>
+
+            <nav class="sidebar-menu">
+                <div class="menu-categoria">Principal</div>
+                <a href="dashboard.html" class="menu-item">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard / Resumen</span>
+                </a>
+
+                <div class="menu-categoria">Gestión Documental</div>
+                <a href="recepcion.html" class="menu-item">
+                    <i data-lucide="inbox"></i>
+                    <span>Recepción de Documentos</span>
+                </a>
+                <a href="empresas.html" class="menu-item">
+                    <i data-lucide="building-2"></i>
+                    <span>Gestión de Empresas / Terceros</span>
+                </a>
+                <a href="radicacion.html" class="menu-item">
+                    <i data-lucide="file-plus-2"></i>
+                    <span>Radicación y Correspondencia</span>
+                </a>
+                <a href="digitalizacion.html" class="menu-item">
+                    <i data-lucide="scan"></i>
+                    <span>Digitalización e Indexación</span>
+                </a>
+                <a href="clasificacion.html" class="menu-item">
+                    <i data-lucide="folder-tree"></i>
+                    <span>TRD (Tablas de Retención)</span>
+                </a>
+                <a href="expedientes.html" class="menu-item">
+                    <i data-lucide="folder-open"></i>
+                    <span>Gestión de Expedientes</span>
+                </a>
+                <a href="prestamos.html" class="menu-item activo">
+                    <i data-lucide="book-open-check"></i>
+                    <span>Préstamos y Consultas</span>
+                </a>
+                <a href="transferencias.html" class="menu-item">
+                    <i data-lucide="arrow-right-left"></i>
+                    <span>Transferencias Documentales</span>
+                </a>
+                <a href="disposicion.html" class="menu-item">
+                    <i data-lucide="trash-2"></i>
+                    <span>Disposición Final / Eliminación</span>
+                </a>
+
+                <div class="menu-categoria">Administración</div>
+                <a href="usuarios.html" class="menu-item">
+                    <i data-lucide="users"></i>
+                    <span>Gestión de Usuarios</span>
+                </a>
+                <a href="seguridad.html" class="menu-item">
+                    <i data-lucide="shield-check"></i>
+                    <span>Seguridad y Autorizaciones</span>
+                </a>
+                <a href="reportes.html" class="menu-item">
+                    <i data-lucide="bar-chart-3"></i>
+                    <span>Reportes y Auditoría</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" class="menu-item salir" id="btnCerrarSesion">
+                    <i data-lucide="log-out"></i>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </div>
+        </aside>
+
+
+        <!-- =========================================
+             CONTENIDO PRINCIPAL - PRÉSTAMOS
+        ========================================== -->
+        <main class="dashboard-main">
+
+            <!-- HEADER SUPERIOR -->
+            <header class="dashboard-header">
+                <div class="header-saludo">
+                    <h1>Préstamos y <span>Consultas</span></h1>
+                    <p>Control de solicitudes, trazabilidad de entrega y devolución de unidades documentales</p>
+                </div>
+
+                <div class="header-acciones">
+                    <div class="buscador-global">
+                        <i data-lucide="search"></i>
+                        <input type="text" placeholder="Buscar préstamo, solicitante...">
+                    </div>
+                    <button class="btn-notificacion" aria-label="Notificaciones">
+                        <i data-lucide="bell"></i>
+                        <span class="punto-notif"></span>
+                    </button>
+                    <div class="perfil-usuario">
+                        <div class="avatar-iniciales" id="inicialesUsuario">FA</div>
+                    </div>
+                </div>
+            </header>
+
+
+            <!-- ÁREA DE CONTENIDO PRÉSTAMOS -->
+            <div class="dashboard-content">
+
+                <!-- TARJETA SUPERIOR DE ACCIONES Y FILTROS -->
+                <div class="tarjeta-filtro-prestamo">
+                    <div class="grupo-busqueda-prest">
+                        <div class="input-icono">
+                            <i data-lucide="user-search"></i>
+                            <input type="text" id="buscarPrestamo" placeholder="Filtrar por solicitante o código de expediente...">
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-primario" id="btnNuevoPrestamo">
+                        <i data-lucide="plus-circle"></i>
+                        <span>Nuevo Préstamo</span>
+                    </button>
+                </div>
+
+
+                <!-- LISTADO / TABLA DE PRÉSTAMOS ACTIVOS -->
+                <div class="seccion-tabla">
+                    <div class="tabla-header">
+                        <h2>Préstamos y Solicitudes en Curso</h2>
+                        <span class="badge amarillo" id="totalPrestamos">0 Préstamos Activos</span>
+                    </div>
+
+                    <div class="tabla-contenedor">
+                        <table class="tabla-datos">
+                            <thead>
+                                <tr>
+                                    <th>ID / Expediente</th>
+                                    <th>Solicitante / Dependencia</th>
+                                    <th>Fecha de Salida</th>
+                                    <th>Fecha Máxima de Retorno</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaPrestamos">
+                                <tr>
+                                    <td><strong>PRST-892</strong><br><span class="prest-sub">EXP-2026-205</span></td>
+                                    <td>
+                                        <div class="prest-celda-titulo">Dra. Claudia Marcela Ríos</div>
+                                        <span class="prest-sub">Oficina Jurídica</span>
+                                    </td>
+                                    <td>02 Nov 2026</td>
+                                    <td>16 Nov 2026</td>
+                                    <td><span class="badge verde">Prestado (En Plazo)</span></td>
+                                    <td>
+                                        <div class="acciones-fila-grupo">
+                                            <button class="btn-accion-tabla" title="Registrar Devolución"><i data-lucide="rotate-ccw"></i></button>
+                                            <button class="btn-accion-tabla" title="Ampliar Plazo"><i data-lucide="calendar-plus"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>PRST-889</strong><br><span class="prest-sub">EXP-2026-100</span></td>
+                                    <td>
+                                        <div class="prest-celda-titulo">Ing. Roberto Méndez</div>
+                                        <span class="prest-sub">Gestión Financiera</span>
+                                    </td>
+                                    <td>20 Oct 2026</td>
+                                    <td>03 Nov 2026</td>
+                                    <td><span class="badge rojo">Vencido (Pendiente Devolución)</span></td>
+                                    <td>
+                                        <div class="acciones-fila-grupo">
+                                            <button class="btn-accion-tabla" title="Registrar Devolución"><i data-lucide="rotate-ccw"></i></button>
+                                            <button class="btn-accion-tabla" title="Enviar Recordatorio"><i data-lucide="bell-ring"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>PRST-895</strong><br><span class="prest-sub">EXP-2026-301</span></td>
+                                    <td>
+                                        <div class="prest-celda-titulo">Lic. Sofía Vargas</div>
+                                        <span class="prest-sub">Talento Humano</span>
+                                    </td>
+                                    <td>10 Nov 2026</td>
+                                    <td>24 Nov 2026</td>
+                                    <td><span class="badge verde">Prestado (En Plazo)</span></td>
+                                    <td>
+                                        <div class="acciones-fila-grupo">
+                                            <button class="btn-accion-tabla" title="Registrar Devolución"><i data-lucide="rotate-ccw"></i></button>
+                                            <button class="btn-accion-tabla" title="Ampliar Plazo"><i data-lucide="calendar-plus"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- ACTIVAR ICONOS LUCIDE -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <script src="../js/prestamos.js"></script>
+
+</body>
+</html>

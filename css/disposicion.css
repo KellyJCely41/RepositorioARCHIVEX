@@ -1,0 +1,117 @@
+/* =========================================================
+   ESTILOS PARA EL MÓDULO DE DISPOSICIÓN FINAL Y ELIMINACIÓN
+========================================================= */
+
+/* TARJETA SUPERIOR DE FILTROS */
+.tarjeta-filtro-disp {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.grupo-busqueda-disp {
+    flex: 1;
+    max-width: 480px;
+}
+
+.grupo-busqueda-disp .input-icono {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.grupo-busqueda-disp .input-icono i {
+    position: absolute;
+    left: 14px;
+    width: 18px;
+    height: 18px;
+    color: var(--text-muted);
+}
+
+.grupo-busqueda-disp .input-icono input {
+    width: 100%;
+    padding: 11px 14px 11px 42px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--input-bg);
+    font-size: 0.9rem;
+    color: var(--text-main);
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.grupo-busqueda-disp .input-icono input:focus {
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.12);
+}
+
+/* FORMATO DE CELDAS PARA DISPOSICIÓN */
+.disp-celda-titulo {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.disp-sub {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+/* BADGE MORADO Y ROJO PERSONALIZADOS */
+.badge.morado {
+    background: #f3e8fd;
+    color: #9334e6;
+}
+
+.badge.rojo {
+    background: #fce8e6;
+    color: #c5221f;
+}
+
+.acciones-fila-grupo {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-accion-tabla {
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.2s;
+}
+
+.btn-accion-tabla i {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-accion-tabla:hover {
+    background: #e8f0fe;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .tarjeta-filtro-disp {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .grupo-busqueda-disp {
+        width: 100%;
+        max-width: 100%;
+    }
+}

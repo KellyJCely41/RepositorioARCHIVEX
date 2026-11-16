@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar contraseña | ARCHIVEX</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/img/favicon-archivex.png">
+
+    <!-- CSS ARCHIVEX -->
+    <link rel="stylesheet" href="/css/estilos.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <main class="pagina-acceso">
+
+        <!-- =================================
+             PANEL IZQUIERDO - ILUSTRACIÓN FIJA
+        ================================== -->
+        <section class="panel-presentacion">
+            <div class="contenido-estatico">
+                <div class="ilustracion-slide">
+                    <div class="circulo-fondo"></div>
+                    <div class="icono-flotante"><i data-lucide="key-round"></i></div>
+                </div>
+                <div class="texto-presentacion">
+                    <h2>Recupera tu acceso</h2>
+                    <p>Te enviaremos las instrucciones necesarias para restablecer tu contraseña y asegurar tu cuenta institucional.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================
+             PANEL DERECHO - RECUPERAR CONTRASEÑA
+        ================================== -->
+        <section class="panel-acceso">
+
+            <div class="tarjeta-login">
+
+                <!-- LOGO SITUADO ENCIMA DEL TÍTULO -->
+                <div class="logo-acceso">
+                    <img src="/img/logo-archivex.png" alt="Logo ARCHIVEX">
+                </div>
+
+                <!-- ENCABEZADO -->
+                <div class="encabezado-login">
+                    <h1>¿Olvidó su contraseña?</h1>
+                    <p>Ingrese su correo institucional para recibir el enlace de recuperación.</p>
+                </div>
+
+                <!-- FORMULARIO DE RECUPERACIÓN -->
+                <form class="formulario-login" id="formularioRecuperar">
+
+                    <!-- CORREO ELECTRÓNICO / USUARIO -->
+                    <div class="campo-formulario">
+                        <label for="emailRecuperar">Correo Electrónico o Usuario</label>
+                        <div class="input-icono">
+                            <i data-lucide="mail"></i>
+                            <input 
+                                type="text" 
+                                id="emailRecuperar" 
+                                name="emailRecuperar" 
+                                placeholder="Ingrese su correo o usuario" 
+                                autocomplete="email" 
+                                required>
+                        </div>
+                    </div>
+
+                    <!-- MENSAJE DE ESTADO -->
+                    <p id="mensajeRecuperar" class="mensaje-login"></p>
+
+                    <!-- BOTÓN ENVIAR INSTRUCCIONES -->
+                    <button type="submit" class="btn-login">
+                        <span>Enviar instrucciones</span>
+                    </button>
+
+                </form>
+
+                <!-- SOPORTE / VOLVER AL LOGIN -->
+                <div class="soporte-login">
+                    <span>¿Recordó su contraseña?</span>
+                    <a href="index.html">Volver a iniciar sesión</a>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- JAVASCRIPT -->
+    <script src="/js/archivex.js"></script>
+
+    <!-- ACTIVAR ICONOS LUCIDE -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <script src="../js/recuperar.js"></script>
+
+</body>
+</html>

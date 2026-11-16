@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disposición Final y Eliminación | ARCHIVEX</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/img/favicon-archivex.png">
+
+    <!-- CSS ARCHIVEX -->
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/disposicion.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="cuerpo-dashboard">
+
+    <div class="dashboard-container">
+
+        <!-- =========================================
+             SIDEBAR LATERAL (AZUL INSTITUCIONAL)
+        ========================================== -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-logo">
+                <img src="/img/logo-archivex.png" alt="Logo ARCHIVEX">
+            </div>
+
+            <nav class="sidebar-menu">
+                <div class="menu-categoria">Principal</div>
+                <a href="dashboard.html" class="menu-item">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard / Resumen</span>
+                </a>
+
+                <div class="menu-categoria">Gestión Documental</div>
+                <a href="recepcion.html" class="menu-item">
+                    <i data-lucide="inbox"></i>
+                    <span>Recepción de Documentos</span>
+                </a>
+                <a href="empresas.html" class="menu-item">
+                    <i data-lucide="building-2"></i>
+                    <span>Gestión de Empresas / Terceros</span>
+                </a>
+                <a href="radicacion.html" class="menu-item">
+                    <i data-lucide="file-plus-2"></i>
+                    <span>Radicación y Correspondencia</span>
+                </a>
+                <a href="digitalizacion.html" class="menu-item">
+                    <i data-lucide="scan"></i>
+                    <span>Digitalización e Indexación</span>
+                </a>
+                <a href="clasificacion.html" class="menu-item">
+                    <i data-lucide="folder-tree"></i>
+                    <span>TRD (Tablas de Retención)</span>
+                </a>
+                <a href="expedientes.html" class="menu-item">
+                    <i data-lucide="folder-open"></i>
+                    <span>Gestión de Expedientes</span>
+                </a>
+                <a href="prestamos.html" class="menu-item">
+                    <i data-lucide="book-open-check"></i>
+                    <span>Préstamos y Consultas</span>
+                </a>
+                <a href="transferencias.html" class="menu-item">
+                    <i data-lucide="arrow-right-left"></i>
+                    <span>Transferencias Documentales</span>
+                </a>
+                <a href="disposicion.html" class="menu-item activo">
+                    <i data-lucide="trash-2"></i>
+                    <span>Disposición Final / Eliminación</span>
+                </a>
+
+                <div class="menu-categoria">Administración</div>
+                <a href="usuarios.html" class="menu-item">
+                    <i data-lucide="users"></i>
+                    <span>Gestión de Usuarios</span>
+                </a>
+                <a href="seguridad.html" class="menu-item">
+                    <i data-lucide="shield-check"></i>
+                    <span>Seguridad y Autorizaciones</span>
+                </a>
+                <a href="reportes.html" class="menu-item">
+                    <i data-lucide="bar-chart-3"></i>
+                    <span>Reportes y Auditoría</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" class="menu-item salir" id="btnCerrarSesion">
+                    <i data-lucide="log-out"></i>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </div>
+        </aside>
+
+
+        <!-- =========================================
+             CONTENIDO PRINCIPAL - DISPOSICIÓN FINAL
+        ========================================== -->
+        <main class="dashboard-main">
+
+            <!-- HEADER SUPERIOR -->
+            <header class="dashboard-header">
+                <div class="header-saludo">
+                    <h1>Disposición Final y <span>Eliminación</span></h1>
+                    <p>Evaluación de series documentales, actas de comité de archivo y procesos de eliminación</p>
+                </div>
+
+                <div class="header-acciones">
+                    <div class="buscador-global">
+                        <i data-lucide="search"></i>
+                        <input type="text" placeholder="Buscar acta, serie o expediente...">
+                    </div>
+                    <button class="btn-notificacion" aria-label="Notificaciones">
+                        <i data-lucide="bell"></i>
+                        <span class="punto-notif"></span>
+                    </button>
+                    <div class="perfil-usuario">
+                        <div class="avatar-iniciales" id="inicialesUsuario">FA</div>
+                    </div>
+                </div>
+            </header>
+
+
+            <!-- ÁREA DE CONTENIDO DISPOSICIÓN FINAL -->
+            <div class="dashboard-content">
+
+                <!-- TARJETA SUPERIOR DE ACCIONES Y FILTROS -->
+                <div class="tarjeta-filtro-disp">
+                    <div class="grupo-busqueda-disp">
+                        <div class="input-icono">
+                            <i data-lucide="shield-alert"></i>
+                            <input type="text"
+                                placeholder="Filtrar por tipo de disposición (Eliminación, Selección, Conservación)...">
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-primario" id="btnNuevaActa">
+                        <i data-lucide="file-plus"></i>
+                        <span>Generar Acta de Comité</span>
+                    </button>
+                </div>
+
+
+                <!-- LISTADO / TABLA DE DISPOSICIÓN FINAL -->
+                <div class="seccion-tabla">
+                    <div class="tabla-header">
+                        <h2>Procesos de Disposición Final Programados</h2>
+                        <span class="badge rojo" id="totalActas">0 Actas registradas</span>
+                    </div>
+
+                    <div class="tabla-contenedor">
+                        <table class="tabla-datos">
+                            <thead>
+                                <tr>
+                                    <th>ID / Acta</th>
+                                    <th>Serie / Asunto Documental</th>
+                                    <th>Disposición TRD</th>
+                                    <th>Fecha de Validación</th>
+                                    <th>Estado Comité</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaDisposicion">
+                                <tr>
+                                    <td><strong>ACT-2026-03</strong></td>
+                                    <td>
+                                        <div class="disp-celda-titulo">Peticiones, Quejas y Reclamos (PQR) 2021</div>
+                                        <span class="disp-sub">Cumplió retención en Archivo Central</span>
+                                    </td>
+                                    <td><span class="badge amarillo">Eliminación (E)</span></td>
+                                    <td>15 Nov 2026</td>
+                                    <td><span class="badge azul">Pendiente Aprobación Junta</span></td>
+                                    <td>
+                                        <div class="acciones-fila-grupo">
+                                            <button class="btn-accion-tabla" title="Ver detalle y listado de folios"><i
+                                                    data-lucide="file-text"></i></button>
+                                            <button class="btn-accion-tabla" title="Aprobar Acta"><i
+                                                    data-lucide="check-circle"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ACT-2026-02</strong></td>
+                                    <td>
+                                        <div class="disp-celda-titulo">Comprobantes de Contabilidad 2015</div>
+                                        <span class="disp-sub">Selección de soportes contables vigencia anterior</span>
+                                    </td>
+                                    <td><span class="badge morado">Selección (S)</span></td>
+                                    <td>10 Oct 2026</td>
+                                    <td><span class="badge verde">Aprobado / Ejecutado</span></td>
+                                    <td>
+                                        <div class="acciones-fila-grupo">
+                                            <button class="btn-accion-tabla" title="Ver Acta Firmada"><i
+                                                    data-lucide="file-check"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ACT-2026-01</strong></td>
+                                    <td>
+                                        <div class="disp-celda-titulo">Historias Laborales Personal Retirado (1995-2005)
+                                        </div>
+                                        <span class="disp-sub">Microfilmación y Conservación Permanente</span>
+                                    </td>
+                                    <td><span class="badge azul">Conservación Total (CT)</span></td>
+                                    <td>05 Sep 2026</td>
+                                    <td><span class="badge verde">En Archivo Histórico</span></td>
+                                    <td>
+                                        <div class="acciones-fila-grupo">
+                                            <button class="btn-accion-tabla" title="Ver Certificado de Conservación"><i
+                                                    data-lucide="shield-check"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- ACTIVAR ICONOS LUCIDE -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <script src="../js/disposicion.js"></script>
+
+</body>
+
+</html>
